@@ -1,0 +1,61 @@
+---
+const links: [string, string][] = [
+    ["/", "Home"],
+    ["/project", "Projects"],
+    ["/gallery", "Gallery"],
+    ["/publication", "Blogs & Articles"],
+];
+---
+
+<header
+    class="fixed flex items-center top-0 z-10 w-full h-16 bg-white px-4 shadow-sm drop-shadow md:h-[72px] md:p-5 lg:h-20 xl:px-6"
+>
+    <div class="flex w-full justify-between items-center">
+        <a class="flex gap-2" href="/">
+            <span class="h-9"><img src="/logo.png" class="aspect-square h-full" alt="logo" /></span>
+            <span class="text-3xl font-semibold tracking-tighter">Xenitane&trade;</span>
+        </a>
+        <nav
+            class="mainNav fixed md:static bg-white shadow-sm drop-shadow-sm md:shadow-none md:drop-shadow-none md:bg-none translate-x-full transition-all duration-300 ease-in-out md:translate-x-0 top-16 left-0 w-full md:w-auto p-[10px_0_25px] md:p-0"
+        >
+            <ul class="flex flex-col md:flex-row items-center space-y-4 md:space-y-0 md:space-x-6">
+                {
+                    links.map(([link, text]) => (
+                        <li>
+                            <a class="font-medium transition-colors duration-200 hover:text-gray-500" href={link}>
+                                {text}
+                            </a>
+                        </li>
+                    ))
+                }
+            </ul>
+        </nav>
+        <div class="block md:hidden hover:cursor-pointer hamburger">
+            <div class="h-[3px] rounded-full w-[27px] bg-black m-[5px_0] transition-all duration-300 ease-in-out opacity-80">
+            </div>
+            <div class="h-[3px] rounded-full w-[27px] bg-black m-[5px_0] transition-all duration-300 ease-in-out opacity-80">
+            </div>
+            <div class="h-[3px] rounded-full w-[27px] bg-black m-[5px_0] transition-all duration-300 ease-in-out opacity-80">
+            </div>
+        </div>
+    </div>
+</header>
+
+<script>
+    do {
+        const navEl = document.querySelector("nav.mainNav");
+        const hamEl = document.querySelector("div.hamburger");
+
+        hamEl?.addEventListener("click", function () {
+            navEl?.classList.toggle("translate-x-full");
+            hamEl?.classList.toggle("hamburger-open");
+        });
+
+        document.addEventListener("click", function (e) {
+            if (!hamEl?.contains(e.target as Node)) {
+                navEl?.classList.add("translate-x-full");
+                hamEl?.classList.remove("hamburger-open");
+            }
+        });
+    } while (0);
+</script>
