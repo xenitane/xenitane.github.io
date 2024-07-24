@@ -16,17 +16,17 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v4
-            - uses: withastro/action@v2
+            - uses: pnpm/action-setup@v3
+              with:
+                  version: latest
+                  run_install: false
+            - uses: actions/setup-node@v4
               with:
                   node-version: 20
-                  package-manager: pnpm@latest
-
-    deploy:
-        needs: build
-        runs-on: ubuntu-latest
-        environment:
-            name: github-pages
-            url: ${{ steps.deployment.outputs.page_url }}
-        steps:
-            - id: deployment
-              uses: actions/deploy-pages@v4
+                  cache: pnpm
+            - run: pnpm install --frozen-lockfile
+            - run: pnpm build
+            - uses: peaceiris/actions-gh-pages@v4
+              with:
+                  github_token: ${{ secrets.GITHUB_TOKEN }}
+                  publish_dir: "./dist"
