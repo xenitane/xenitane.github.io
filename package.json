@@ -19,7 +19,7 @@
         "@astrojs/sitemap": "^3.1.6",
         "@astrojs/tailwind": "^5.1.0",
         "@types/alpinejs": "^3.13.10",
-        "astro": "^4.12.0",
+        "astro": "^4.12.2",
         "clsx": "^2.1.1",
         "prettier-plugin-astro": "^0.14.1",
         "prettier-plugin-tailwindcss": "^0.6.5",
