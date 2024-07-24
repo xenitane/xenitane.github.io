@@ -1,0 +1,62 @@
+---
+interface Props {
+    title: string;
+    description: string;
+    keywords: string[];
+    image?: string;
+}
+
+const { title, description, keywords, image = "/logo.jpg" } = Astro.props;
+import { SITE_TITLE } from "@/constants";
+
+import "jetbrains-mono";
+import "@/styles/base.css";
+
+import Header from "@/components/Header.astro";
+import Footer from "@/components/Footer.astro";
+---
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+        <meta http-equiv="content-language" content="en-us" />
+        <meta name="robots" content="index, follow" />
+        <link rel="icon" type="image/png" href="/logo.png" />
+        <meta name="generator" content={Astro.generator} />
+
+        <link rel="sitemap" href="/sitemap-index.xml" />
+
+        <!-- Primary Meta Tags -->
+        <title>{title} | {SITE_TITLE}</title>
+        <meta name="author" content="xenitane" />
+        <meta name="description" content={description} />
+        <meta name="keywords" content={keywords.join(",")} />
+
+        <!-- Open-Graph Meta Tags -->
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={Astro.url} />
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={description} />
+        <meta property="og:image" content={new URL(image, Astro.url)} />
+
+        <!-- Twitter Meta Tags -->
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:url" content={Astro.url} />
+        <meta name="twitter:title" content={title} />
+        <meta name="twitter:description" content={description} />
+        <meta name="twitter:image" content={new URL(image, Astro.url)} />
+    </head>
+    <body class="flex h-dvh flex-col">
+        <Header />
+        <main class="grid flex-1 justify-center">
+            <div class="mx-auto mt-16 flex w-[min(1024px,100%-48px)] flex-col gap-4 py-4 md:mt-20 lg:mt-24">
+                <slot />
+            </div>
+        </main>
+        <Footer />
+    </body>
+</html>

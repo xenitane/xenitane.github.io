@@ -1,0 +1,107 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import Section from "@/components/Section.astro";
+import PlanPoint from "@/components/PlanPoint.astro";
+import ProjectPoint from "@/components/ProjectPoint.astro";
+
+const title = "Home";
+const description =
+    "Explore the Quirky Corners of Xenitane's Web Wonderland: Where Math Meets Technology, Programming is a Creative Journey. Join the Adventure of Problem-Solving and Sorcery of Code. From Artful Web Design to Niche Tech Delights, Amusing Discoveries are waiting for you.";
+const keywords = ["portfolio", "xenitane", "mathematics", "programming", "coding", "software development"];
+---
+
+<BaseLayout title={title} description={description} keywords={keywords}>
+    <div class="flex h-full items-center justify-center p-4 text-center">
+        <div class="grid w-full gap-4">
+            <h1 id="title" class="flex flex-col text-3xl font-bold">
+                <span class="flex flex-col md:inline">
+                    <span> Hey there! </span>
+                    <span> Internet Stranger, </span>
+                </span>
+                <span> Xenitane here. </span>
+            </h1>
+        </div>
+    </div>
+    <div class="mx-auto grid gap-4 p-4">
+        <div class="flex w-full flex-col-reverse gap-4 lg:flex-row lg:items-center">
+            <div class="flex flex-col gap-2">
+                <h2 id="intro" class="text-2xl font-bold italic tracking-tight">Welcome to my Digital Oasis.</h2>
+                <p class="leading-5 text-gray-800">This is where I showcase what I've made and what I'm upto.</p>
+                <p class="leading-5 text-gray-800">Thanks for stopping by and taking a look.</p>
+                <p class="leading-5 text-gray-800">
+                    While you're here, take a breather and look around,
+                    <br />
+                    you might find something to your fancy.
+                </p>
+            </div>
+            <div class="ml-auto flex items-start lg:w-1/3">
+                <img
+                    src="/xenitane-dp.jpg"
+                    alt="Cover image"
+                    class="aspect-[4_/_3] overflow-hidden rounded-xl object-cover object-center grayscale"
+                />
+            </div>
+        </div>
+        <div class="grid gap-2">
+            <h2 id="about" class="text-2xl font-bold italic tracking-tight">About Me</h2>
+            <blockquote class="border-l-[6px] border-gray-200 p-3 leading-5 text-gray-800">
+                <p>Your Friendly, Nerdy, Geeky Software Developer, Wizard of Numbers and Sorcerer of Code</p>
+            </blockquote>
+            <p class="leading-5 text-gray-800">
+                I like maths, solving problems, programming/coding to make stuff for fun
+                <br />
+                that sometime make someone smile.
+            </p>
+            <p class="leading-5 text-gray-800">
+                I love to collaborate to build new things, learn, contribute, and develop new skills.
+            </p>
+            <p class="leading-5 text-gray-800">
+                Enthusiast for all things hardware, mobile/native/embedded, systems, web,
+                <br />
+                sometimes garnished with ops, DS/ML.
+            </p>
+            <p class="font-bold leading-5 text-gray-800">
+                Living in the terminal, arch/zsh/tmux/nvim + tools. Life's too short to program in JAVA.
+            </p>
+        </div>
+    </div>
+    <Section sectionId="plans" sectionName="What I'm upto these days & What I plan to do">
+        <div class="flex w-full rounded-lg bg-gray-100/70">
+            <ul class="p-4 grid w-full md:grid-cols-2 gap-2 space-y-2">
+                <PlanPoint content="Mastering Vim" />
+                <PlanPoint content="Learning New Programming Languages" />
+                <PlanPoint content="Learning Yo-Yo Tricks" />
+                <PlanPoint content="Learning Violin" />
+                <PlanPoint content="Math for fun" />
+                <PlanPoint content="Make a Linux Distro" />
+                <PlanPoint content="Make a Programming Language" />
+            </ul>
+        </div>
+    </Section>
+    <Section sectionId="projects" sectionName="My Projects" link="/project">
+        <div class="flex w-full rounded-lg bg-gray-100/70">
+            <ul class="p-4 grid w-full md:grid-cols-2 gap-2 space-y-2">
+                <ProjectPoint content="Geometric Visualizer" />
+                <ProjectPoint content="JIT Compiler for BrainF*ck" />
+                <ProjectPoint content="Content Aware Image Resizer(No ML)" />
+                <ProjectPoint content="Linux Config in Dotfiles" />
+                <ProjectPoint content="Nonogram Solver" />
+            </ul>
+        </div>
+    </Section>
+    <Section sectionId="publications" sectionName="Recent Articles & Blogs" link="/publication">
+        <!-- <div class="flex w-full rounded-lg bg-gray-100/70">
+            <ul class="p-4 grid w-full md:grid-cols-2 gap-2 space-y-2">
+                
+            </ul>
+        </div> -->
+        <div class="flex h-16 w-full items-center justify-center rounded-lg bg-gray-100/70 font-semibold italic">
+            Coming soon, keep an eye on...
+        </div>
+    </Section>
+    <Section sectionId="gallery" sectionName="Recent Clicks" link="/gallery">
+        <div class="flex h-16 w-full items-center justify-center rounded-lg bg-gray-100/70 font-semibold italic">
+            Coming soon, keep an eye on...
+        </div>
+    </Section>
+</BaseLayout>

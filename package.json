@@ -1,0 +1,29 @@
+{
+    "name": "xenitane-github-io",
+    "type": "module",
+    "version": "0.0.1",
+    "scripts": {
+        "dev": "astro dev",
+        "build": "astro check && astro build",
+        "preview": "astro preview",
+        "astro": "astro",
+        "format": "prettier --write \"**/*.{js,css,json,html,md,yml,yaml,htm,astro}\"",
+        "reset": "rm -rf ./dist"
+    },
+    "dependencies": {
+        "jetbrains-mono": "^1.0.6",
+        "tailwindcss": "^3.4.6"
+    },
+    "devDependencies": {
+        "@astrojs/check": "^0.8.2",
+        "@astrojs/sitemap": "^3.1.6",
+        "@astrojs/tailwind": "^5.1.0",
+        "@types/alpinejs": "^3.13.10",
+        "astro": "^4.12.0",
+        "clsx": "^2.1.1",
+        "prettier-plugin-astro": "^0.14.1",
+        "prettier-plugin-tailwindcss": "^0.6.5",
+        "tailwind-merge": "^2.4.0",
+        "typescript": "^5.5.3"
+    }
+}

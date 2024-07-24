@@ -1,0 +1,17 @@
+---
+interface Props {
+    href: string;
+    text: string;
+}
+---
+
+<a
+    class="group relative flex h-8 w-8 items-center justify-center gap-3 overflow-x-hidden rounded-full border border-gray-200 px-[5px] hover:w-fit"
+    target="_blank"
+    href={Astro.props.href}
+>
+    <span class="h-5 w-5">
+        <slot />
+    </span>
+    <span class="sr-only">Github</span>
+</a>
