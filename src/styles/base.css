@@ -57,3 +57,7 @@ input[type="number"] {
 .hamburger-open div:nth-child(3) {
     @apply translate-y-[-4px] -rotate-45;
 }
+
+[x-cloak] {
+    @apply hidden;
+}

@@ -1,0 +1,43 @@
+---
+import Project from "@/components/Project.astro";
+import BaseLayout, { type BaseLayoutProps } from "@/layouts/BaseLayout.astro";
+import sortByLatest from "@/lib/sortByLatest";
+import { getCollection } from "astro:content";
+
+const pageMetaData = {
+    title: "Projects",
+    description: "Xenitane's Project Archive",
+    keywords: ["portfolio", "xenitane", "projects", "programming", "mathematics", "coding"],
+} satisfies BaseLayoutProps;
+
+const projects = (await getCollection("project")).sort(sortByLatest);
+---
+
+<BaseLayout {...pageMetaData}>
+    <h1 id="title" class="flex py-4 items-center text-3xl font-bold">
+        <span> My Projects </span>
+    </h1>
+    {
+        0 === projects.length ? (
+            <div class="flex h-24 w-full items-center p-4 text-lg justify-center rounded-lg bg-gray-100/70 font-semibold italic">
+                Working on stuff, will post here soon&hellip;
+            </div>
+        ) : (
+            <div class="flex gap-4 flex-col">
+                {projects.map(function ({ data, slug }, idx) {
+                    return (
+                        <Project
+                            textSide={(idx & 1) === 1}
+                            title={data.title}
+                            description={data.description}
+                            heroImage={data.heroImage}
+                            techStack={data.techStack}
+                            link={`/project/${slug}`}
+                            version={data.version}
+                        />
+                    );
+                })}
+            </div>
+        )
+    }
+</BaseLayout>

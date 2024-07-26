@@ -1,0 +1,16 @@
+---
+interface Props {
+    content: string;
+    link?: string;
+}
+const { content, link } = Astro.props;
+---
+
+<li class="flex items-center gap-4">
+    <span class="h-6 w-6">
+        <slot />
+    </span>
+    <h3 class="font-semibold">
+        {undefined === link || 0 === link.trim().length ? content : <a href={link}>{content}</a>}
+    </h3>
+</li>

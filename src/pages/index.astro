@@ -1,28 +1,54 @@
 ---
-import BaseLayout from "@/layouts/BaseLayout.astro";
+import BaseLayout, { type BaseLayoutProps } from "@/layouts/BaseLayout.astro";
 import Section from "@/components/Section.astro";
-import PlanPoint from "@/components/PlanPoint.astro";
-import ProjectPoint from "@/components/ProjectPoint.astro";
+import IconPoint from "@/components/IconPoint.astro";
 
-const title = "Home";
-const description =
-    "Explore the Quirky Corners of Xenitane's Web Wonderland: Where Math Meets Technology, Programming is a Creative Journey. Join the Adventure of Problem-Solving and Sorcery of Code. From Artful Web Design to Niche Tech Delights, Amusing Discoveries are waiting for you.";
-const keywords = ["portfolio", "xenitane", "mathematics", "programming", "coding", "software development"];
+import { getCollection } from "astro:content";
+import sortByLatest from "@/lib/sortByLatest";
+
+import { MAX_PUBLICATIONS_ON_HOME, MAX_CLICKS_ON_HOME } from "@/constants";
+
+const pageMetaData = {
+    title: "Home",
+    description:
+        "Explore the Quirky Corners of Xenitane's Web Wonderland: Where Math Meets Technology, Programming is a Creative Journey. Join the Adventure of Problem-Solving and Sorcery of Code. From Artful Web Design to Niche Tech Delights, Amusing Discoveries are waiting for you.",
+    keywords: ["portfolio", "xenitane", "mathematics", "programming", "coding", "software development"],
+} satisfies BaseLayoutProps;
+
+const projects = (await getCollection("project")).sort(sortByLatest);
+
+const plans: string[] = [
+    "Mastering Vim",
+    "Learning New Programming Languages",
+    "Learning Yo-Yo Tricks",
+    "Learning Violin",
+    "Math for fun",
+    "Make a Linux Distro",
+    "Make a Programming Language",
+];
+
+const publications = (
+    await getCollection("publication", function (publication) {
+        return !publication.data.isDraft;
+    })
+)
+    .sort(sortByLatest)
+    .slice(0, MAX_PUBLICATIONS_ON_HOME);
+
+const clicks = (await getCollection("click")).sort(sortByLatest).slice(0, MAX_CLICKS_ON_HOME);
 ---
 
-<BaseLayout title={title} description={description} keywords={keywords}>
-    <div class="flex h-full items-center justify-center p-4 text-center">
-        <div class="grid w-full gap-4">
-            <h1 id="title" class="flex flex-col text-3xl font-bold">
-                <span class="flex flex-col md:inline">
-                    <span> Hey there! </span>
-                    <span> Internet Stranger, </span>
-                </span>
-                <span> Xenitane here. </span>
-            </h1>
-        </div>
+<BaseLayout {...pageMetaData}>
+    <div class="flex items-center justify-center p-4 text-center">
+        <h1 id="title" class="flex flex-col text-3xl font-bold">
+            <span class="flex flex-col md:inline">
+                <span> Hey there! </span>
+                <span> Internet Stranger, </span>
+            </span>
+            <span> Xenitane here. </span>
+        </h1>
     </div>
-    <div class="mx-auto grid gap-4 p-4">
+    <div class="mx-auto flex flex-col gap-4 p-4">
         <div class="flex w-full flex-col-reverse gap-4 lg:flex-row lg:items-center">
             <div class="flex flex-col gap-2">
                 <h2 id="intro" class="text-2xl font-bold italic tracking-tight">Welcome to my Digital Oasis.</h2>
@@ -34,17 +60,13 @@ const keywords = ["portfolio", "xenitane", "mathematics", "programming", "coding
                     you might find something to your fancy.
                 </p>
             </div>
-            <div class="ml-auto flex items-start lg:w-1/3">
-                <img
-                    src="/xenitane-dp.jpg"
-                    alt="Cover image"
-                    class="aspect-[4_/_3] overflow-hidden rounded-xl object-cover object-center grayscale"
-                />
+            <div class="ml-auto rounded-xl flex items-center aspect-[4/3] justify-center overflow-hidden lg:w-1/3">
+                <img src="/xenitane-dp.jpg" alt="Cover image" class="object-center grayscale" />
             </div>
         </div>
-        <div class="grid gap-2">
+        <div class="flex flex-col gap-2">
             <h2 id="about" class="text-2xl font-bold italic tracking-tight">About Me</h2>
-            <blockquote class="border-l-[6px] border-gray-200 p-3 leading-5 text-gray-800">
+            <blockquote class="border-l-[6px] border-gray-200 p-3 leading-5 text-gray-800 bg-gray-100/40">
                 <p>Your Friendly, Nerdy, Geeky Software Developer, Wizard of Numbers and Sorcerer of Code</p>
             </blockquote>
             <p class="leading-5 text-gray-800">
@@ -66,42 +88,118 @@ const keywords = ["portfolio", "xenitane", "mathematics", "programming", "coding
         </div>
     </div>
     <Section sectionId="plans" sectionName="What I'm upto these days & What I plan to do">
-        <div class="flex w-full rounded-lg bg-gray-100/70">
-            <ul class="p-4 grid w-full md:grid-cols-2 gap-2 space-y-2">
-                <PlanPoint content="Mastering Vim" />
-                <PlanPoint content="Learning New Programming Languages" />
-                <PlanPoint content="Learning Yo-Yo Tricks" />
-                <PlanPoint content="Learning Violin" />
-                <PlanPoint content="Math for fun" />
-                <PlanPoint content="Make a Linux Distro" />
-                <PlanPoint content="Make a Programming Language" />
-            </ul>
-        </div>
+        {
+            0 === plans.length ? (
+                <div class="flex h-16 w-full items-center justify-center rounded-lg bg-gray-100/70 font-semibold italic">
+                    Looking for things to do, will update later&hellip;
+                </div>
+            ) : (
+                <div class="flex w-full rounded-lg bg-gray-100/70">
+                    <ul class="p-4 grid w-full md:grid-cols-2 gap-2 space-y-2">
+                        {plans.map(function (plan) {
+                            return (
+                                <IconPoint content={plan}>
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 24 24"
+                                        fill="currentColor"
+                                        stroke="none"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        class="h-6 w-6"
+                                    >
+                                        <path d="M22,5.18L10.59,16.6l-4.24-4.24l1.41-1.41l2.83,2.83l10-10L22,5.18z M19.79,10.22C19.92,10.79,20,11.39,20,12 c0,4.42-3.58,8-8,8s-8-3.58-8-8c0-4.42,3.58-8,8-8c1.58,0,3.04,0.46,4.28,1.25l1.44-1.44C16.1,2.67,14.13,2,12,2C6.48,2,2,6.48,2,12 c0,5.52,4.48,10,10,10s10-4.48,10-10c0-1.19-0.22-2.33-0.6-3.39L19.79,10.22z" />
+                                    </svg>
+                                </IconPoint>
+                            );
+                        })}
+                    </ul>
+                </div>
+            )
+        }
     </Section>
     <Section sectionId="projects" sectionName="My Projects" link="/project">
-        <div class="flex w-full rounded-lg bg-gray-100/70">
-            <ul class="p-4 grid w-full md:grid-cols-2 gap-2 space-y-2">
-                <ProjectPoint content="Geometric Visualizer" />
-                <ProjectPoint content="JIT Compiler for BrainF*ck" />
-                <ProjectPoint content="Content Aware Image Resizer(No ML)" />
-                <ProjectPoint content="Linux Config in Dotfiles" />
-                <ProjectPoint content="Nonogram Solver" />
-            </ul>
-        </div>
+        {
+            0 === projects.length ? (
+                <div class="flex h-16 w-full items-center justify-center rounded-lg bg-gray-100/70 font-semibold italic">
+                    Working on stuff, will post here soon&hellip;
+                </div>
+            ) : (
+                <div class="flex w-full rounded-lg bg-gray-100/70">
+                    <ul class="p-4 grid w-full md:grid-cols-2 gap-2 space-y-2">
+                        {projects.map(function (project) {
+                            return (
+                                <IconPoint content={project.data.title} link={`/project/${project.slug}`}>
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 512 512"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        stroke-width="32"
+                                        class="h-6 w-6"
+                                    >
+                                        <path d="M448,341.37V170.61A32,32,0,0,0,432.11,143l-152-88.46a47.94,47.94,0,0,0-48.24,0L79.89,143A32,32,0,0,0,64,170.61V341.37A32,32,0,0,0,79.89,369l152,88.46a48,48,0,0,0,48.24,0l152-88.46A32,32,0,0,0,448,341.37Z" />
+                                        <polyline points="69 153.99 256 263.99 443 153.99" />
+                                        <line x1="256" y1="463.99" x2="256" y2="263.99" />
+                                    </svg>
+                                </IconPoint>
+                            );
+                        })}
+                    </ul>
+                </div>
+            )
+        }
     </Section>
     <Section sectionId="publications" sectionName="Recent Articles & Blogs" link="/publication">
-        <!-- <div class="flex w-full rounded-lg bg-gray-100/70">
-            <ul class="p-4 grid w-full md:grid-cols-2 gap-2 space-y-2">
-                
-            </ul>
-        </div> -->
-        <div class="flex h-16 w-full items-center justify-center rounded-lg bg-gray-100/70 font-semibold italic">
-            Coming soon, keep an eye on...
-        </div>
+        {
+            0 === publications.length ? (
+                <div class="flex h-16 w-full items-center justify-center rounded-lg bg-gray-100/70 font-semibold italic">
+                    Scribbling and Drafting some ideas, Keep your eyes open&hellip;
+                </div>
+            ) : (
+                <div class="flex w-full rounded-lg bg-gray-100/70">
+                    <ul class="p-4 grid w-full md:grid-cols-2 gap-2 space-y-2">
+                        {publications.map(function (publication) {
+                            return (
+                                <IconPoint content={publication.data.title} link={`/publication/${publication.slug}`}>
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 24 24"
+                                        fill="currentColor"
+                                        stroke="none"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        class="h-6 w-6"
+                                    >
+                                        <path d="M20 22H4C3.44772 22 3 21.5523 3 21V3C3 2.44772 3.44772 2 4 2H20C20.5523 2 21 2.44772 21 3V21C21 21.5523 20.5523 22 20 22ZM19 20V4H5V20H19ZM7 6H11V10H7V6ZM7 12H17V14H7V12ZM7 16H17V18H7V16ZM13 7H17V9H13V7Z" />
+                                    </svg>
+                                </IconPoint>
+                            );
+                        })}
+                    </ul>
+                </div>
+            )
+        }
     </Section>
     <Section sectionId="gallery" sectionName="Recent Clicks" link="/gallery">
-        <div class="flex h-16 w-full items-center justify-center rounded-lg bg-gray-100/70 font-semibold italic">
-            Coming soon, keep an eye on...
-        </div>
+        {
+            0 === clicks.length ? (
+                <div class="flex h-16 w-full items-center justify-center rounded-lg bg-gray-100/70 font-semibold italic">
+                    Wait some time, you'll see the world through my eyes&hellip;
+                </div>
+            ) : (
+                <div class="grid grid-cols-2 md:grid-cols-3 p-2 gap-2 md:p-4 md:gap-4 w-full rounded-lg bg-gray-100/70">
+                    {clicks.map(function (click) {
+                        return (
+                            <div class="aspect-[4/3] flex justify-center items-center rounded-md overflow-hidden">
+                                <img class="object-center grayscale" src={click.data.image} alt={click.id} />
+                            </div>
+                        );
+                    })}
+                </div>
+            )
+        }
     </Section>
 </BaseLayout>

@@ -10,11 +10,13 @@ export default {
     bracketSpacing: true,
     plugins: ["prettier-plugin-tailwindcss", "prettier-plugin-astro"],
     tailwindConfig: "./tailwind.config.mjs",
-    tailwindAttributes: ["class"],
-    overrides: [{
-        files: ".astro",
-        options: {
-            parser: "astro"
-        }
-    }]
+    tailwindAttributes: ["class", "class:list"],
+    overrides: [
+        {
+            files: ".astro",
+            options: {
+                parser: "astro",
+            },
+        },
+    ],
 };
