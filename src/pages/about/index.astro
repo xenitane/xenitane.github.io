@@ -1,0 +1,61 @@
+---
+import BaseLayout, { type BaseLayoutProps } from "@/layouts/BaseLayout.astro";
+
+const pageMetadata = {
+    title: "About",
+    description: "Aout Xenitane",
+    keywords: ["about", "portfolio", "xenitane", "resume", "software developer", "programmer", "coder", "software engineer"],
+} satisfies BaseLayoutProps;
+
+const Content = (await Astro.glob("@/data/about.md"))[0].Content;
+---
+
+<BaseLayout {...pageMetadata}>
+    <h1 id="title" class="flex py-4 items-center text-3xl font-bold">
+        <span> About Me </span>
+    </h1>
+    <div class="flex flex-col gap-2" id="about-content">
+        <Content />
+    </div>
+    <div class="flex flex-col">
+        <h2 class="font-bold text-xl">My Resume</h2>
+        <p>You can download my resume here</p>
+        <ul class="flex gap-2">
+            <li class="px-2 py-1 bg-gray-300/50 rounded-xl">
+                <a href="/about/resume.pdf"> Resume.pdf </a>
+            </li>
+            <li class="px-2 py-1 bg-gray-300/50 rounded-xl">
+                <a href="/about/resume.md"> Resume.md </a>
+            </li>
+        </ul>
+    </div>
+</BaseLayout>
+
+<style is:global>
+    #about-content {
+        h1 {
+            @apply text-3xl font-bold tracking-tighter;
+        }
+        blockquote {
+            @apply border-l-[6px] border-gray-300/50 bg-gray-200/70 px-3 py-1;
+        }
+        h2 {
+            @apply text-2xl font-bold;
+            + * a {
+                @apply underline;
+            }
+        }
+        h3 {
+            @apply text-xl font-bold;
+            + * {
+                @apply font-semibold;
+                em {
+                    @apply font-normal;
+                }
+            }
+        }
+        ul {
+            @apply list-disc space-y-1 px-6;
+        }
+    }
+</style>

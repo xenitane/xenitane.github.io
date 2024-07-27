@@ -1,5 +1,5 @@
 ---
-title: ".dotfiles"
+title: ".Dotfiles"
 description: "Reproducible config for UNIX systems via dotfiles."
 heroImage:  "https://generated.vusercontent.net/placeholder.svg"
 techStack: ["shell","lua"]
