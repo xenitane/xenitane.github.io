@@ -90,7 +90,7 @@ const clicks = (await getCollection("click")).sort(sortByLatest).slice(0, MAX_CL
     <Section sectionId="plans" sectionName="What I'm upto these days & What I plan to do">
         {
             0 === plans.length ? (
-                <div class="flex h-16 w-full items-center justify-center rounded-lg bg-gray-100/70 font-semibold italic">
+                <div class="flex p-4 w-full items-center justify-center rounded-lg bg-gray-100/70 font-semibold italic">
                     Looking for things to do, will update later&hellip;
                 </div>
             ) : (
@@ -121,7 +121,7 @@ const clicks = (await getCollection("click")).sort(sortByLatest).slice(0, MAX_CL
     <Section sectionId="projects" sectionName="My Projects" link="/project">
         {
             0 === projects.length ? (
-                <div class="flex h-16 w-full items-center justify-center rounded-lg bg-gray-100/70 font-semibold italic">
+                <div class="flex p-4 w-full items-center justify-center rounded-lg bg-gray-100/70 font-semibold italic">
                     Working on stuff, will post here soon&hellip;
                 </div>
             ) : (
@@ -155,7 +155,7 @@ const clicks = (await getCollection("click")).sort(sortByLatest).slice(0, MAX_CL
     <Section sectionId="publications" sectionName="Recent Articles & Blogs" link="/publication">
         {
             0 === publications.length ? (
-                <div class="flex h-16 w-full items-center justify-center rounded-lg bg-gray-100/70 font-semibold italic">
+                <div class="flex w-full p-4 items-center justify-center rounded-lg bg-gray-100/70 font-semibold italic">
                     Scribbling and Drafting some ideas, Keep your eyes open&hellip;
                 </div>
             ) : (
@@ -186,7 +186,7 @@ const clicks = (await getCollection("click")).sort(sortByLatest).slice(0, MAX_CL
     <Section sectionId="gallery" sectionName="Recent Clicks" link="/gallery">
         {
             0 === clicks.length ? (
-                <div class="flex h-16 w-full items-center justify-center rounded-lg bg-gray-100/70 font-semibold italic">
+                <div class="flex p-4 w-full items-center justify-center rounded-lg bg-gray-100/70 font-semibold italic">
                     Wait some time, you'll see the world through my eyes&hellip;
                 </div>
             ) : (
