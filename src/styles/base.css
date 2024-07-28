@@ -1,4 +1,5 @@
-:root {
+:root,
+[data-rehype-pretty-code-figure] {
     font-family:
         "JetBrains Mono",
         system-ui,

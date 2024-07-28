@@ -1,0 +1,103 @@
+---
+import { type CollectionEntry } from "astro:content";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+
+import formatDate from "@/lib/formatDate";
+type Props = CollectionEntry<"publication">["data"];
+
+const { title, description, heroImage, keywords, createdAt } = Astro.props;
+---
+
+<BaseLayout title={title} description={description} keywords={keywords}>
+    <a class="underline" href="/project">&leftarrow;&numsp;All Blogs &amp; Articles</a>
+    <h1 class="flex items-center font-bold text-xl md:text-2xl text-nowrap">
+        <span class="overflow-hidden text-ellipsis">{title}</span>
+    </h1>
+    <span class="text-nowrap min-w-fit">on {formatDate(createdAt)}</span>
+    <div class="aspect-video overflow-hidden rounded-2xl flex items-center justify-center">
+        <img src={heroImage} class="grayscale object-center" alt={`${title} - Project Hero Image`} />
+    </div>
+    <div id="publication-content">
+        <slot />
+    </div>
+</BaseLayout>
+
+<style is:global>
+    #publication-content {
+        @apply flex flex-col gap-4;
+        h2 {
+            @apply text-2xl font-bold;
+        }
+        h2:not(:first-of-type) {
+            @apply mt-2;
+        }
+        p {
+            @apply text-wrap;
+            * {
+                @apply text-wrap;
+            }
+        }
+        h3 {
+            @apply text-xl;
+        }
+        img {
+            @apply grayscale;
+        }
+        [data-rehype-pretty-code-figure] {
+            @apply relative;
+        }
+
+        [data-rehype-pretty-code-title] {
+            @apply mt-0 inline-flex h-12 items-center rounded-tl-md rounded-tr-md;
+            @apply border-t-2 border-indigo-500 bg-[#1e1e2e] px-4 text-sm text-[#cdd6f4];
+        }
+
+        [data-rehype-pretty-code-title] + pre {
+            @apply rounded-tl-none;
+        }
+
+        [data-rehype-pretty-code-title] ~ [data-copy] {
+            @apply top-16;
+        }
+
+        [data-copy] {
+            @apply absolute right-4 top-4 rounded-md border border-gray-500 bg-white p-2 text-sm text-gray-900 transition-all hover:bg-gray-400 disabled:pointer-events-none disabled:bg-gray-400;
+        }
+
+        pre {
+            @apply mx-auto overflow-auto rounded-md p-4;
+            @apply scrollbar-thin scrollbar-thumb-gray-500 scrollbar-thumb-rounded;
+
+            [data-line] {
+                @apply -mx-4 px-6;
+            }
+
+            [data-highlighted-line] {
+                @apply bg-white/10;
+            }
+
+            [data-highlighted-chars] {
+                @apply rounded-md p-1;
+            }
+
+            mark {
+                @apply bg-gray-800 text-inherit;
+            }
+        }
+
+        code {
+            @apply text-base !leading-loose md:text-base;
+
+            &[data-line-numbers] {
+                counter-reset: line;
+
+                > [data-line]::before {
+                    counter-increment: line;
+                    content: counter(line);
+
+                    @apply mr-4 inline-block w-4 text-right text-gray-500;
+                }
+            }
+        }
+    }
+</style>

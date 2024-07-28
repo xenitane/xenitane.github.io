@@ -1,0 +1,27 @@
+---
+import BaseLayout, { type BaseLayoutProps } from "@/layouts/BaseLayout.astro";
+import sortByLatest from "@/lib/sortByLatest";
+import { getCollection } from "astro:content";
+
+const pageMetaData = {
+    title: "Blogs & Articles",
+    description: "Xenitane's Publications",
+    keywords: ["portfolio", "xenitane", "blogs", "articles"],
+} satisfies BaseLayoutProps;
+
+const publications = (
+    await getCollection("publication", function (publication) {
+        return !publication.data.isDraft;
+    })
+).sort(sortByLatest);
+---
+
+<BaseLayout {...pageMetaData}>
+    <ul class="flex flex-col gap-2">
+        {
+            publications.map(function (publication) {
+                return <a href={`/${publication.collection}/${publication.slug}`}>{publication.data.title}</a>;
+            })
+        }
+    </ul>
+</BaseLayout>

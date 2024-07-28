@@ -29,7 +29,7 @@ const { heroImage, link, title, textSide, techStack, description, version } = As
         <ul class="flex gap-2 flex-wrap text-sm">
             {
                 techStack.map(function (tech) {
-                    return <li class="bg-gray-200 px-2 py-1 rounded-full">&num;{tech}</li>;
+                    return <li class="bg-gray-200 px-2 py-1 rounded-full">{tech}</li>;
                 })
             }
         </ul>
