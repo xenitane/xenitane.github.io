@@ -20,21 +20,27 @@ const publications = (
     <h1 id="title" class="flex py-4 items-center text-3xl font-bold">
         <span> All Blogs &amp; Articles </span>
     </h1>
-    <div class="grid md:grid-cols-2 gap-4">
-        {
-            publications.map(function ({ slug, data, collection }) {
-                return (
-                    <a
-                        href={`/${collection}/${slug}`}
-                        class="relative aspect-[4/3] overflow-hidden rounded-xl flex items-center justify-center"
-                    >
-                        <img src={data.heroImage} alt={`hero-image-${slug}`} class="grayscale" />
-                        <div class="absolute inset-x-0 flex items-center bottom-0 h-16 bg-neutral-400/60 p-4 w-full">
-                            <span class="text-nowrap overflow-hidden text-ellipsis">{data.title}</span>
-                        </div>
-                    </a>
-                );
-            })
-        }
-    </div>
+    {
+        0 === publications.length ? (
+            <div class="flex h-24 w-full items-center p-4 text-lg justify-center rounded-lg bg-gray-100/70 font-semibold italic">
+                Scribbling and Drafting some ideas, Keep your eyes open&hellip;
+            </div>
+        ) : (
+            <div class="grid md:grid-cols-2 gap-4">
+                {publications.map(function ({ slug, data, collection }) {
+                    return (
+                        <a
+                            href={`/${collection}/${slug}`}
+                            class="relative aspect-[4/3] overflow-hidden rounded-xl flex items-center justify-center"
+                        >
+                            <img src={data.heroImage} alt={`hero-image-${slug}`} class="grayscale" />
+                            <div class="absolute inset-x-0 flex items-center bottom-0 h-16 bg-neutral-400/60 p-4 w-full">
+                                <span class="text-nowrap overflow-hidden text-ellipsis">{data.title}</span>
+                            </div>
+                        </a>
+                    );
+                })}
+            </div>
+        )
+    }
 </BaseLayout>
