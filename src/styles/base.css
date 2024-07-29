@@ -48,17 +48,3 @@ input[type="number"] {
     -moz-appearance: textfield;
     appearance: textfield;
 }
-
-.hamburger-open div:nth-child(1) {
-    @apply translate-y-[4px] rotate-45;
-}
-.hamburger-open div:nth-child(2) {
-    @apply hidden;
-}
-.hamburger-open div:nth-child(3) {
-    @apply translate-y-[-4px] -rotate-45;
-}
-
-[x-cloak] {
-    @apply hidden;
-}

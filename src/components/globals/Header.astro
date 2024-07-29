@@ -9,36 +9,28 @@ const links: [string, string][] = [
 ---
 
 <header
-    class="fixed flex items-center top-0 z-20 w-full h-16 bg-white px-4 shadow-sm drop-shadow md:h-[72px] md:p-5 lg:h-20 xl:px-6"
-    x-data="{open:false}"
-    x-on:click="if(!$refs.hamEl.contains($event.target)&&!$refs.navEl.contains($event.target))open=false"
+    class="fixed flex items-center top-0 z-10 w-full h-16 bg-white px-4 shadow-sm drop-shadow md:h-[72px] md:p-5 lg:h-20 xl:px-6"
 >
     <div class="flex w-full justify-between items-center">
         <a class="flex gap-2" href="/">
             <img src="/logo.png" class="aspect-square h-9" alt="logo" />
             <span class="text-3xl font-semibold tracking-tighter">Xenitane&trade;</span>
         </a>
-        <div
-            class="absolute bottom-0 inset-x-0 z-10 top-16 w-dvw h-[calc(100dvh-64px)] bg-gray-300/15"
-            x-cloak
-            x-show="open"
-            x-trap.noscroll="open"
-        >
-        </div>
+        <input type="checkbox" id="__is_nav_sidebar_active" class="hidden" />
+        <label for="__is_nav_sidebar_active" id="overlay" class="absolute hidden inset-0 z-[15] w-dvw h-dvh bg-transparent"
+        ></label>
         <nav
-            class="bg-white duration-300 transition-all translate-x-full ease-in-out py-4 pl-4 w-3/4 h-[calc(100dvh-64px)] absolute z-20 bottom-0 top-16 right-0 md:static md:translate-x-0 md:w-auto md:h-auto md:p-0"
-            :class="open&&'!translate-x-0'"
-            x-ref="navEl"
+            class="bg-white duration-300 transition-all ease-in-out py-4 pl-4 w-3/4 h-dvh absolute z-20 -right-full inset-y-0 md:static md:w-auto md:h-auto md:p-0"
         >
-            <ul class="flex flex-col md:flex-row items-baseline md:items-center space-y-4 md:space-y-0 md:space-x-6">
+            <label for="__is_nav_sidebar_active" class="block w-[19px] aspect-square my-4 md:hidden hover:cursor-pointer">
+                <div class="h-[3px] rounded-full mb-px translate-y-0.5 w-[27px] bg-black rotate-45 opacity-80"></div>
+                <div class="h-[3px] rounded-full w-[27px] -translate-y-0.5 bg-black -rotate-45 opacity-80"></div>
+            </label>
+            <ul class="flex flex-col md:flex-row items-baseline md:items-center gap-4 md:space-y-0 md:gap-6">
                 {
                     links.map(([link, text]) => (
                         <li>
-                            <a
-                                class="font-medium transition-colors duration-300 hover:text-gray-500"
-                                href={link}
-                                x-on:click="open=false"
-                            >
+                            <a class="font-medium transition-colors duration-300 hover:text-gray-500" href={link}>
                                 {text}
                             </a>
                         </li>
@@ -46,13 +38,21 @@ const links: [string, string][] = [
                 }
             </ul>
         </nav>
-        <div class="block md:hidden hover:cursor-pointer" x-on:click="open=!open" x-ref="hamEl" :class="open&&'hamburger-open'">
-            <div class="h-[3px] rounded-full w-[27px] bg-black m-[5px_0] transition-all duration-300 ease-in-out opacity-80">
-            </div>
-            <div class="h-[3px] rounded-full w-[27px] bg-black m-[5px_0] transition-all duration-300 ease-in-out opacity-80">
-            </div>
-            <div class="h-[3px] rounded-full w-[27px] bg-black m-[5px_0] transition-all duration-300 ease-in-out opacity-80">
-            </div>
-        </div>
+        <label for="__is_nav_sidebar_active" class="block md:hidden hover:cursor-pointer">
+            <div class="h-[3px] rounded-full w-[27px] bg-black opacity-80"></div>
+            <div class="h-[3px] rounded-full w-[27px] bg-black my-[5px] opacity-80"></div>
+            <div class="h-[3px] rounded-full w-[27px] bg-black opacity-80"></div>
+        </label>
     </div>
 </header>
+
+<style>
+    #__is_nav_sidebar_active:checked {
+        ~ nav {
+            right: 0;
+        }
+        ~ #overlay {
+            display: block;
+        }
+    }
+</style>

@@ -2,7 +2,7 @@
 title: "Nonogram Solver"
 description: "A program to solve nonogram puzzles."
 heroImage:  "https://generated.vusercontent.net/placeholder.svg"
-techStack: ["C++"]
+techStack: ["zig"]
 keywords: ["puzzles","nonogram"]
 version: "dev"
 createdAt: "10 July 2024"

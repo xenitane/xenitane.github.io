@@ -4,7 +4,7 @@ description: "Reproducible config for UNIX systems via dotfiles."
 heroImage:  "https://generated.vusercontent.net/placeholder.svg"
 techStack: ["shell","lua"]
 keywords: [".dotfiles","config","shell","neovim","zsh","tmux","gnu/linux","unix"]
-version: "rc"
+version: "nightly"
 createdAt: "21 Mar 2024"
 ---
 

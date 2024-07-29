@@ -29,7 +29,7 @@ const plans: string[] = [
 
 const publications = (
     await getCollection("publication", function (publication) {
-        return !publication.data.isDraft;
+        return import.meta.env.DEV || !publication.data.isDraft;
     })
 )
     .sort(sortByLatest)

@@ -4,7 +4,7 @@ import { type CollectionEntry, getCollection } from "astro:content";
 
 export async function getStaticPaths() {
     const publications = await getCollection("publication", function (publication) {
-        return !publication.data.isDraft;
+        return import.meta.env.DEV || !publication.data.isDraft;
     });
     return publications.map((publication) => ({
         params: { slug: publication.slug },
