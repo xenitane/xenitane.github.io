@@ -25,17 +25,7 @@ const projects = (await getCollection("project")).sort(sortByLatest);
         ) : (
             <div class="flex gap-4 flex-col">
                 {projects.map(function ({ data, slug }, idx) {
-                    return (
-                        <Project
-                            textSide={(idx & 1) === 1}
-                            title={data.title}
-                            description={data.description}
-                            heroImage={data.heroImage}
-                            techStack={data.techStack}
-                            link={`/project/${slug}`}
-                            version={data.version}
-                        />
-                    );
+                    return <Project textSide={(idx & 1) === 1} slug={slug} {...data} />;
                 })}
             </div>
         )

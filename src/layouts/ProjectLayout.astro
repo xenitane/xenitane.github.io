@@ -3,16 +3,19 @@ import type { CollectionEntry } from "astro:content";
 import BaseLayout from "./BaseLayout.astro";
 
 import formatDate from "@/lib/formatDate";
+import { fade } from "astro:transitions";
 
-type Props = CollectionEntry<"project">["data"];
+type Props = CollectionEntry<"project">["data"] & { slug: CollectionEntry<"project">["slug"] };
 
-const { title, description, keywords, heroImage, techStack, createdAt, version } = Astro.props;
+const { title, description, keywords, heroImage, techStack, createdAt, version, slug } = Astro.props;
 ---
 
 <BaseLayout title={title} keywords={keywords} description={description}>
     <a class="underline" href="/project">&leftarrow;&numsp;All Projects</a>
-    <h1 class="flex items-center font-bold text-xl md:text-2xl text-nowrap">
-        <span class="overflow-hidden text-ellipsis">{title}<sup>{version}</sup></span>
+    <h1 class="flex items-center font-bold text-xl md:text-2xl text-nowrap" transition:name={`PRT-${slug}`}>
+        <span class="overflow-hidden text-ellipsis">
+            {title}<sup>{version}</sup>
+        </span>
     </h1>
 
     <div class="flex flex-wrap gap-2 items-center">
@@ -25,7 +28,7 @@ const { title, description, keywords, heroImage, techStack, createdAt, version }
     </div>
     <span class="text-nowrap ml-auto min-w-fit">on {formatDate(createdAt)}</span>
     <div class="aspect-video overflow-hidden rounded-2xl flex items-center justify-center">
-        <img src={heroImage} class="grayscale object-center" alt={`${title} - Project Hero Image`} />
+        <img src={heroImage} class="grayscale center" alt={`${title} - Project Hero Image`} transition:name={`PRHI-${slug}`} />
     </div>
     <slot />
 </BaseLayout>

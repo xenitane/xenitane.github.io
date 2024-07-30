@@ -1,8 +1,8 @@
 ---
-interface Props {
+type Props = {
     content: string;
     link?: string;
-}
+};
 const { content, link } = Astro.props;
 ---
 
@@ -11,6 +11,14 @@ const { content, link } = Astro.props;
         <slot />
     </span>
     <h3 class="font-semibold">
-        {undefined === link || 0 === link.trim().length ? content : <a href={link}>{content}</a>}
+        {
+            undefined === link ? (
+                content
+            ) : (
+                <a transition:name={`${link.split("/")[1].slice(0, 2).toUpperCase()}T-${link.split("/")[2]}`} href={link}>
+                    {content}
+                </a>
+            )
+        }
     </h3>
 </li>

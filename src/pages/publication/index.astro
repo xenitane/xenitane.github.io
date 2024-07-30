@@ -1,4 +1,5 @@
 ---
+import Publication from "@/components/Publication.astro";
 import BaseLayout, { type BaseLayoutProps } from "@/layouts/BaseLayout.astro";
 import sortByLatest from "@/lib/sortByLatest";
 import { getCollection } from "astro:content";
@@ -27,18 +28,8 @@ const publications = (
             </div>
         ) : (
             <div class="grid md:grid-cols-2 gap-4">
-                {publications.map(function ({ slug, data, collection }) {
-                    return (
-                        <a
-                            href={`/${collection}/${slug}`}
-                            class="relative aspect-[4/3] overflow-hidden rounded-xl flex items-center justify-center"
-                        >
-                            <img src={data.heroImage} alt={`hero-image-${slug}`} class="grayscale" />
-                            <div class="absolute inset-x-0 flex items-center bottom-0 h-16 bg-neutral-400/60 p-4 w-full">
-                                <span class="text-nowrap overflow-hidden text-ellipsis">{data.title}</span>
-                            </div>
-                        </a>
-                    );
+                {publications.map(function ({ slug, data }) {
+                    return <Publication {...data} slug={slug} />;
                 })}
             </div>
         )

@@ -3,10 +3,11 @@ import PublicationLayout from "@/layouts/PublicationLayout.astro";
 import { type CollectionEntry, getCollection } from "astro:content";
 
 export async function getStaticPaths() {
-    const publications = await getCollection("publication", function (publication) {
-        return import.meta.env.DEV || !publication.data.isDraft;
-    });
-    return publications.map((publication) => ({
+    return (
+        await getCollection("publication", function (publication) {
+            return import.meta.env.DEV || !publication.data.isDraft;
+        })
+    ).map((publication) => ({
         params: { slug: publication.slug },
         props: publication,
     }));
@@ -17,6 +18,6 @@ const publication = Astro.props;
 const { Content } = await publication.render();
 ---
 
-<PublicationLayout {...publication.data}>
+<PublicationLayout {...publication.data} slug={publication.slug}>
     <Content />
 </PublicationLayout>

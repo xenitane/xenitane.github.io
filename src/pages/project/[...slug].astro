@@ -3,8 +3,7 @@ import { type CollectionEntry, getCollection } from "astro:content";
 import ProjectLayout from "@/layouts/ProjectLayout.astro";
 
 export async function getStaticPaths() {
-    const projects = await getCollection("project");
-    return projects.map((project) => ({
+    return (await getCollection("project")).map((project) => ({
         params: { slug: project.slug },
         props: project,
     }));
@@ -15,6 +14,6 @@ const project = Astro.props;
 const { Content } = await project.render();
 ---
 
-<ProjectLayout {...project.data}>
+<ProjectLayout {...project.data} slug={project.slug}>
     <Content />
 </ProjectLayout>

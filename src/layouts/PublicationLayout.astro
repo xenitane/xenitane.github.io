@@ -1,21 +1,29 @@
 ---
 import { type CollectionEntry } from "astro:content";
+import { fade } from "astro:transitions";
+
 import BaseLayout from "@/layouts/BaseLayout.astro";
 
 import formatDate from "@/lib/formatDate";
-type Props = CollectionEntry<"publication">["data"];
+type Props = CollectionEntry<"publication">["data"] & { slug: CollectionEntry<"publication">["slug"] };
 
-const { title, description, heroImage, keywords, createdAt } = Astro.props;
+const { title, description, heroImage, keywords, createdAt, slug } = Astro.props;
 ---
 
 <BaseLayout title={title} description={description} keywords={keywords}>
     <a class="underline" href="/publication">&leftarrow;&numsp;All Blogs &amp; Articles</a>
     <h1 class="flex items-center font-bold text-xl md:text-2xl text-nowrap">
-        <span class="overflow-hidden text-ellipsis">{title}</span>
+        <span class="overflow-hidden text-ellipsis" transition:name={`PUT-${slug}`}> </span>
+        {title}
     </h1>
     <span class="text-nowrap min-w-fit">on {formatDate(createdAt)}</span>
     <div class="aspect-video overflow-hidden rounded-2xl flex items-center justify-center">
-        <img src={heroImage} class="grayscale object-center" alt={`${title} - Project Hero Image`} />
+        <img
+            src={heroImage}
+            class="grayscale object-center"
+            alt={`${title} - Project Hero Image`}
+            transition:name={`PUHI-${slug}`}
+        />
     </div>
     <div id="publication-content">
         <slot />

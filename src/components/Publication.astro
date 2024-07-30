@@ -1,0 +1,16 @@
+---
+import type { CollectionEntry } from "astro:content";
+
+type Props = CollectionEntry<"publication">["data"] & {
+    slug: CollectionEntry<"publication">["slug"];
+};
+
+const { slug, heroImage, title } = Astro.props;
+---
+
+<a href={`/publication/${slug}`} class="aspect-[4/3] relative overflow-hidden rounded-xl flex items-center justify-center">
+    <img transition:name={`PUHI-${slug}`} src={heroImage} alt={`hero-image-${slug}`} class="grayscale" />
+    <div class="absolute inset-x-0 flex items-center bottom-0 h-16 bg-neutral-400/60 p-4 w-full">
+        <span transition:name={`PUT-${slug}`} class="text-nowrap overflow-hidden text-ellipsis">{title}</span>
+    </div>
+</a>

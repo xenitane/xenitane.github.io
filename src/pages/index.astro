@@ -61,7 +61,7 @@ const clicks = (await getCollection("click")).sort(sortByLatest).slice(0, MAX_CL
                 </p>
             </div>
             <div class="ml-auto rounded-xl flex items-center aspect-[4/3] justify-center overflow-hidden lg:w-1/3">
-                <img src="/xenitane-dp.jpg" alt="Cover image" class="object-center grayscale" />
+                <img src="/xenitane-dp.jpg" alt="Cover image" class="center grayscale" />
             </div>
         </div>
         <div class="flex flex-col gap-2">
@@ -194,7 +194,7 @@ const clicks = (await getCollection("click")).sort(sortByLatest).slice(0, MAX_CL
                     {clicks.map(function (click) {
                         return (
                             <div class="aspect-[4/3] flex justify-center items-center rounded-md overflow-hidden">
-                                <img class="object-center grayscale" src={click.data.image} alt={click.id} />
+                                <img class="grayscale" src={click.data.image} alt={click.id} />
                             </div>
                         );
                     })}

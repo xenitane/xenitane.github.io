@@ -1,10 +1,12 @@
 ---
-interface Props {
+import { fade, ViewTransitions } from "astro:transitions";
+
+type Props = {
     title: string;
     description: string;
     keywords: string[];
     image?: string;
-}
+};
 
 export type BaseLayoutProps = Props;
 
@@ -53,10 +55,11 @@ import Footer from "@/components/globals/Footer.astro";
         <meta name="twitter:title" content={title} />
         <meta name="twitter:description" content={description} />
         <meta name="twitter:image" content={new URL(image, Astro.url)} />
+        <ViewTransitions />
     </head>
     <body class="flex h-dvh flex-col">
         <Header />
-        <main class="flex flex-1 justify-center">
+        <main class="flex flex-1 justify-center" transition:animate={fade({ duration: "0.3s" })}>
             <div class="mx-auto mt-16 flex w-[calc(min(100%-48px,1024px))] flex-col gap-4 py-4 md:mt-[72px] lg:mt-20">
                 <slot />
             </div>
