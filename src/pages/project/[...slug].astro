@@ -1,10 +1,13 @@
 ---
 import { type CollectionEntry, getCollection } from "astro:content";
 import ProjectLayout from "@/layouts/ProjectLayout.astro";
+import minifySlug from "@/lib/minifySlug";
 
 export async function getStaticPaths() {
     return (await getCollection("project")).map((project) => ({
-        params: { slug: project.slug },
+        params: {
+            slug: minifySlug(project.slug),
+        },
         props: project,
     }));
 }

@@ -1,5 +1,6 @@
 ---
 import PublicationLayout from "@/layouts/PublicationLayout.astro";
+import minifuSlug from "@/lib/minifySlug";
 import { type CollectionEntry, getCollection } from "astro:content";
 
 export async function getStaticPaths() {
@@ -8,7 +9,7 @@ export async function getStaticPaths() {
             return import.meta.env.DEV || !publication.data.isDraft;
         })
     ).map((publication) => ({
-        params: { slug: publication.slug },
+        params: { slug: minifuSlug(publication.slug) },
         props: publication,
     }));
 }

@@ -1,8 +1,8 @@
 ---
-isDraft: true
+isDraft: false
 title: "Electric Flux Through Rectangular Sheet"
 description: "Solving a definite integral to find the electric flux through a rectangular sheet by a finite charge."
-heroImage: "https://generated.vusercontent.net/placeholder.svg"
+heroImage: "/images/publication/electric-flux-through-rectangular-sheet.png"
 keywords: ["physics", "electrostats", "gauss law", "integration"]
 createdAt: "03 Dec 2023"
 ---
@@ -35,7 +35,7 @@ I mentioned above that we need to find the flux for one square, but what if inst
 
 So what we'll do is try to find the answer for a rectangle and put the dimentsions of the square in the expression to generate our answer.
 
-$$ \Phi_{(m,n)} = \Large\oint_{R_{(m,n)}}\normalsize\overrightarrow{E}_{(x,y)}\ldotp\overrightarrow{\text{d}s} $$
+$$ \Phi_{(m,n)} = \Large\oint_{R_{(m,n)}}\normalsize\overrightarrow{E}_{(x,y)}\ldotp\text{d}\overrightarrow{s} $$
 
 $$ \overrightarrow{E}_{(x,y)}=\dfrac{1}{4\pi\epsilon_{0}}\dfrac{q(x\hat{i}+y\hat{j}+a\hat{k})}{(a^{2}+x^{2}+y^{2})^{3/2}} $$
 

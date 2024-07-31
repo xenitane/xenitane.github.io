@@ -27,8 +27,13 @@ const { title, description, keywords, heroImage, techStack, createdAt, version, 
         }
     </div>
     <span class="text-nowrap ml-auto min-w-fit">on {formatDate(createdAt)}</span>
-    <div class="aspect-video overflow-hidden rounded-2xl flex items-center justify-center">
-        <img src={heroImage} class="grayscale center" alt={`${title} - Project Hero Image`} transition:name={`PRHI-${slug}`} />
+    <div class="border border-gray-300 aspect-video overflow-hidden rounded-2xl flex items-center justify-center">
+        <img
+            src={heroImage}
+            class="grayscale min-h-full min-w-full object-cover"
+            alt={`${title} - Project Hero Image`}
+            transition:name={`PRHI-${slug}`}
+        />
     </div>
     <slot />
 </BaseLayout>

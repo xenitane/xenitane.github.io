@@ -1,15 +1,22 @@
 ---
 import type { CollectionEntry } from "astro:content";
+import minifuSlug from "@/lib/minifySlug";
 
 type Props = CollectionEntry<"publication">["data"] & {
     slug: CollectionEntry<"publication">["slug"];
 };
 
-const { slug, heroImage, title } = Astro.props;
+const { slug: slugOrig, heroImage, title } = Astro.props;
+const slug = minifuSlug(slugOrig);
 ---
 
 <a href={`/publication/${slug}`} class="aspect-[4/3] relative overflow-hidden rounded-xl flex items-center justify-center">
-    <img transition:name={`PUHI-${slug}`} src={heroImage} alt={`hero-image-${slug}`} class="grayscale" />
+    <img
+        transition:name={`PUHI-${slug}`}
+        src={heroImage}
+        alt={`hero-image-${slug}`}
+        class="grayscale min-h-full min-w-full object-cover"
+    />
     <div class="absolute inset-x-0 flex items-center bottom-0 h-16 bg-neutral-400/60 p-4 w-full">
         <span transition:name={`PUT-${slug}`} class="text-nowrap overflow-hidden text-ellipsis">{title}</span>
     </div>

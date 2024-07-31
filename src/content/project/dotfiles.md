@@ -1,7 +1,7 @@
 ---
 title: ".Dotfiles"
 description: "Reproducible config for UNIX systems via dotfiles."
-heroImage:  "https://generated.vusercontent.net/placeholder.svg"
+heroImage:  "/images/project/dotfiles.png"
 techStack: ["shell","lua"]
 keywords: [".dotfiles","config","shell","neovim","zsh","tmux","gnu/linux","unix"]
 version: "nightly"

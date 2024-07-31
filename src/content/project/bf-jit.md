@@ -1,7 +1,7 @@
 ---
 title: "BrainF*ck Compiler"
 description: "A compiler/interpreter for brainf*ck with jitting."
-heroImage:  "https://generated.vusercontent.net/placeholder.svg"
+heroImage:  "/images/project/bf-jit.png"
 techStack: ["C","x86_ASM"]
 keywords: ["compiler","interpreter"]
 version: "1.0"

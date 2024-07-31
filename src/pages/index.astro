@@ -5,6 +5,7 @@ import IconPoint from "@/components/IconPoint.astro";
 
 import { getCollection } from "astro:content";
 import sortByLatest from "@/lib/sortByLatest";
+import minifuSlug from "@/lib/minifySlug";
 
 import { MAX_PUBLICATIONS_ON_HOME, MAX_CLICKS_ON_HOME } from "@/constants";
 
@@ -129,7 +130,7 @@ const clicks = (await getCollection("click")).sort(sortByLatest).slice(0, MAX_CL
                     <ul class="p-4 grid w-full md:grid-cols-2 gap-2 space-y-2">
                         {projects.map(function (project) {
                             return (
-                                <IconPoint content={project.data.title} link={`/project/${project.slug}`}>
+                                <IconPoint content={project.data.title} link={`/project/${minifuSlug(project.slug)}`}>
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
                                         viewBox="0 0 512 512"
@@ -163,7 +164,10 @@ const clicks = (await getCollection("click")).sort(sortByLatest).slice(0, MAX_CL
                     <ul class="p-4 grid w-full md:grid-cols-2 gap-2 space-y-2">
                         {publications.map(function (publication) {
                             return (
-                                <IconPoint content={publication.data.title} link={`/publication/${publication.slug}`}>
+                                <IconPoint
+                                    content={publication.data.title}
+                                    link={`/publication/${minifuSlug(publication.slug)}`}
+                                >
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
                                         viewBox="0 0 24 24"

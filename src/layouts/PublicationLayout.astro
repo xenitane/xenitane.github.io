@@ -1,13 +1,13 @@
 ---
 import { type CollectionEntry } from "astro:content";
-import { fade } from "astro:transitions";
-
+import minifuSlug from "@/lib/minifySlug";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 
 import formatDate from "@/lib/formatDate";
 type Props = CollectionEntry<"publication">["data"] & { slug: CollectionEntry<"publication">["slug"] };
 
-const { title, description, heroImage, keywords, createdAt, slug } = Astro.props;
+const { title, description, heroImage, keywords, createdAt, slug: slugOrig } = Astro.props;
+const slug = minifuSlug(slugOrig);
 ---
 
 <BaseLayout title={title} description={description} keywords={keywords}>
@@ -17,10 +17,10 @@ const { title, description, heroImage, keywords, createdAt, slug } = Astro.props
         {title}
     </h1>
     <span class="text-nowrap min-w-fit">on {formatDate(createdAt)}</span>
-    <div class="aspect-video overflow-hidden rounded-2xl flex items-center justify-center">
+    <div class="aspect-video border border-gray-300 overflow-hidden rounded-2xl flex items-center justify-center">
         <img
             src={heroImage}
-            class="grayscale object-center"
+            class="grayscale object-cover min-h-full min-w-full"
             alt={`${title} - Project Hero Image`}
             transition:name={`PUHI-${slug}`}
         />

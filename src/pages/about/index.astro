@@ -22,10 +22,12 @@ const Content = (await Astro.glob("@/data/about.md"))[0].Content;
         <p>You can download my resume here</p>
         <ul class="flex gap-2">
             <li class="px-2 py-1 bg-gray-300/50 rounded-xl">
-                <a href="/about/resume.pdf"> Resume.pdf </a>
+                <a target="_blank" href="https://drive.google.com/file/d/1RzQvP_kWop8xFSUg2FCiTUw-jayIfff4/view">
+                    Resume.pdf
+                </a>
             </li>
             <li class="px-2 py-1 bg-gray-300/50 rounded-xl">
-                <a href="/about/resume.md"> Resume.md </a>
+                <a target="_blank" href="/about/resume.md"> Resume.md </a>
             </li>
         </ul>
     </div>
