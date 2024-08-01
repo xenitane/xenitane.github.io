@@ -1,9 +1,9 @@
 ---
 title: "Nonogram Solver"
 description: "A program to solve nonogram puzzles."
-heroImage:  "/images/project/nonogram-solver.png"
+heroImage: "/images/project/nonogram-solver.png"
 techStack: ["zig"]
-keywords: ["puzzles","nonogram"]
+keywords: ["puzzles", "nonogram"]
 version: "dev"
 createdAt: "10 July 2024"
 ---

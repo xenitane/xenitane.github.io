@@ -12,15 +12,15 @@ const slug = minifuSlug(slugOrig);
 
 <BaseLayout title={title} description={description} keywords={keywords}>
     <a class="underline" href="/publication">&leftarrow;&numsp;All Blogs &amp; Articles</a>
-    <h1 class="flex items-center font-bold text-xl md:text-2xl text-nowrap">
+    <h1 class="flex items-center text-nowrap text-xl font-bold md:text-2xl">
         <span class="overflow-hidden text-ellipsis" transition:name={`PUT-${slug}`}> </span>
         {title}
     </h1>
-    <span class="text-nowrap min-w-fit">on {formatDate(createdAt)}</span>
-    <div class="aspect-video border border-gray-300 overflow-hidden rounded-2xl flex items-center justify-center">
+    <span class="min-w-fit text-nowrap">on {formatDate(createdAt)}</span>
+    <div class="flex aspect-video items-center justify-center overflow-hidden rounded-2xl border border-gray-300">
         <img
             src={heroImage}
-            class="grayscale object-cover min-h-full min-w-full"
+            class="min-h-full min-w-full object-cover grayscale"
             alt={`${title} - Project Hero Image`}
             transition:name={`PUHI-${slug}`}
         />

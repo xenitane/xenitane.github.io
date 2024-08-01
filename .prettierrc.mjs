@@ -8,7 +8,7 @@ export default {
     semi: true,
     singleQuote: false,
     bracketSpacing: true,
-    plugins: ["prettier-plugin-tailwindcss", "prettier-plugin-astro"],
+    plugins: ["prettier-plugin-astro", "prettier-plugin-organize-imports", "prettier-plugin-tailwindcss"],
     tailwindConfig: "./tailwind.config.mjs",
     tailwindAttributes: ["class", "class:list"],
     overrides: [

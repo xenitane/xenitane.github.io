@@ -1,4 +1,4 @@
-import type { MarkdownInstance } from "astro";
+import { type MarkdownInstance } from "astro";
 
 const resumeMd = (
     (await import.meta.glob("@/data/about.md")["/src/data/about.md"]()) as MarkdownInstance<Record<string, any>>

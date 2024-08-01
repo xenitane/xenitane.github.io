@@ -9,39 +9,41 @@ const links: [string, string][] = [
 ---
 
 <header
-    class="fixed flex items-center top-0 z-10 w-full h-16 bg-white px-4 shadow-sm drop-shadow md:h-[72px] md:p-5 lg:h-20 xl:px-6"
+    class="fixed top-0 z-10 flex h-16 w-full items-center bg-white px-4 shadow-sm drop-shadow md:h-[72px] md:p-5 lg:h-20 xl:px-6"
 >
-    <div class="flex w-full justify-between items-center">
+    <div class="flex w-full items-center justify-between">
         <a class="flex gap-2" href="/">
             <img src="/logo.png" class="aspect-square h-9" alt="logo" />
             <span class="text-3xl font-semibold tracking-tighter">Xenitane&trade;</span>
         </a>
         <input type="checkbox" id="__is_nav_sidebar_active" class="hidden" />
-        <label for="__is_nav_sidebar_active" id="overlay" class="absolute hidden inset-0 z-[15] w-dvw h-dvh bg-transparent"
+        <label for="__is_nav_sidebar_active" id="overlay" class="absolute inset-0 z-[15] hidden h-dvh w-dvw bg-transparent"
         ></label>
         <nav
-            class="bg-white duration-300 transition-all ease-in-out py-4 pl-4 w-3/4 h-dvh absolute z-20 -right-full inset-y-0 md:static md:w-auto md:h-auto md:p-0"
+            class="absolute inset-y-0 -right-full z-20 h-dvh w-3/4 bg-white py-4 pl-4 transition-all duration-300 ease-in-out md:static md:h-auto md:w-auto md:p-0"
         >
-            <label for="__is_nav_sidebar_active" class="block w-[19px] aspect-square my-4 md:hidden hover:cursor-pointer">
-                <div class="h-[3px] rounded-full mb-px translate-y-0.5 w-[27px] bg-black rotate-45 opacity-80"></div>
-                <div class="h-[3px] rounded-full w-[27px] -translate-y-0.5 bg-black -rotate-45 opacity-80"></div>
+            <label for="__is_nav_sidebar_active" class="my-4 block aspect-square w-[19px] hover:cursor-pointer md:hidden">
+                <div class="mb-px h-[3px] w-[27px] translate-y-0.5 rotate-45 rounded-full bg-black opacity-80"></div>
+                <div class="h-[3px] w-[27px] -translate-y-0.5 -rotate-45 rounded-full bg-black opacity-80"></div>
             </label>
-            <ul class="flex flex-col md:flex-row items-baseline md:items-center gap-4 md:space-y-0 md:gap-6">
+            <ul class="flex flex-col items-baseline gap-4 md:flex-row md:items-center md:gap-6 md:space-y-0">
                 {
-                    links.map(([link, text]) => (
-                        <li>
-                            <a class="font-medium transition-colors duration-300 hover:text-gray-500" href={link}>
-                                {text}
-                            </a>
-                        </li>
-                    ))
+                    links.map(function ([link, text]) {
+                        return (
+                            <li>
+                                <a class="font-medium transition-colors duration-300 hover:text-gray-500" href={link}>
+                                    {text}
+                                </a>
+                            </li>
+                        );
+                    })
                 }
             </ul>
         </nav>
-        <label for="__is_nav_sidebar_active" class="block md:hidden hover:cursor-pointer">
-            <div class="h-[3px] rounded-full w-[27px] bg-black opacity-80"></div>
-            <div class="h-[3px] rounded-full w-[27px] bg-black my-[5px] opacity-80"></div>
-            <div class="h-[3px] rounded-full w-[27px] bg-black opacity-80"></div>
+        <label for="__is_nav_sidebar_active" class="block hover:cursor-pointer md:hidden">
+            <div class="h-[3px] w-[27px] rounded-full bg-black opacity-80"></div>
+            <div class="my-[5px] h-[3px] w-[27px] rounded-full bg-black opacity-80"></div>
+            <div class="h-[3px] w-[27px] rounded-full bg-black opacity-80"></div>
         </label>
     </div>
 </header>

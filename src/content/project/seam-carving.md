@@ -1,9 +1,9 @@
 ---
 title: "Seam Carving"
 description: "Content aware image resizing without ML."
-heroImage:  "/images/project/seam-carving.png"
+heroImage: "/images/project/seam-carving.png"
 techStack: ["C"]
-keywords: ["image manipulation","seam carving","content aware image manipulation","no machine learning"]
+keywords: ["image manipulation", "seam carving", "content aware image manipulation", "no machine learning"]
 version: "1.0"
 createdAt: "12 Apr 2024"
 ---

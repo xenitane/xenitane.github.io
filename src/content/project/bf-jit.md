@@ -1,17 +1,16 @@
 ---
 title: "BrainF*ck Compiler"
 description: "A compiler/interpreter for brainf*ck with jitting."
-heroImage:  "/images/project/bf-jit.png"
-techStack: ["C","x86_ASM"]
-keywords: ["compiler","interpreter"]
+heroImage: "/images/project/bf-jit.png"
+techStack: ["C", "x86_ASM"]
+keywords: ["compiler", "interpreter"]
 version: "1.0"
 createdAt: "31 Jan 2024"
 ---
 
-
 Firstly yes, you read the name right. When I embarked on my journey to make a programming language, I took the recommended course of action, implement a compiler/interpreter for an existing one.
 
-And what's a better starting point than the implementation of a simple ***turing machine*** with no state and minimal instruction set.
+And what's a better starting point than the implementation of a simple **_turing machine_** with no state and minimal instruction set.
 
 This implementation add the feature of JIT-ting, for compressing repeated operations.
 

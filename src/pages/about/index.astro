@@ -11,22 +11,22 @@ const Content = (await Astro.glob("@/data/about.md"))[0].Content;
 ---
 
 <BaseLayout {...pageMetadata}>
-    <h1 id="title" class="flex py-4 items-center text-3xl font-bold">
+    <h1 id="title" class="flex items-center py-4 text-3xl font-bold">
         <span> About Me </span>
     </h1>
     <div class="flex flex-col gap-2" id="about-content">
         <Content />
     </div>
     <div class="flex flex-col">
-        <h2 class="font-bold text-xl">My Resume</h2>
+        <h2 class="text-xl font-bold">My Resume</h2>
         <p>You can download my resume here</p>
         <ul class="flex gap-2">
-            <li class="px-2 py-1 bg-gray-300/50 rounded-xl">
+            <li class="rounded-xl bg-gray-300/50 px-2 py-1">
                 <a target="_blank" href="https://drive.google.com/file/d/1RzQvP_kWop8xFSUg2FCiTUw-jayIfff4/view">
                     Resume.pdf
                 </a>
             </li>
-            <li class="px-2 py-1 bg-gray-300/50 rounded-xl">
+            <li class="rounded-xl bg-gray-300/50 px-2 py-1">
                 <a target="_blank" href="/about/resume.md"> Resume.md </a>
             </li>
         </ul>

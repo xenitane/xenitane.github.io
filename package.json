@@ -7,7 +7,7 @@
         "build": "astro check && astro build",
         "preview": "astro preview",
         "astro": "astro",
-        "format": "prettier --write \"**/*.{js,ts,css,json,html,md,yml,yaml,astro,mdx,jsx,tsx,svelte,vue}\"",
+        "format": "prettier --write \"**/*.{js,ts,css,json,html,md,mdx,yml,yaml,astro,mdx,jsx,tsx,svelte,vue}\"",
         "reset": "rm -rf ./dist"
     },
     "dependencies": {
@@ -28,6 +28,7 @@
         "astro": "^4.12.3",
         "clsx": "^2.1.1",
         "prettier-plugin-astro": "^0.14.1",
+        "prettier-plugin-organize-imports": "^4.0.0",
         "prettier-plugin-tailwindcss": "^0.6.5",
         "rehype-mathjax": "^6.0.0",
         "rehype-pretty-code": "^0.13.2",

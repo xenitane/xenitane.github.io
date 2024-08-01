@@ -4,12 +4,14 @@ import ProjectLayout from "@/layouts/ProjectLayout.astro";
 import minifySlug from "@/lib/minifySlug";
 
 export async function getStaticPaths() {
-    return (await getCollection("project")).map((project) => ({
-        params: {
-            slug: minifySlug(project.slug),
-        },
-        props: project,
-    }));
+    return (await getCollection("project")).map(function (project) {
+        return {
+            params: {
+                slug: minifySlug(project.slug),
+            },
+            props: project,
+        };
+    });
 }
 type Props = CollectionEntry<"project">;
 

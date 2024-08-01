@@ -1,7 +1,7 @@
 ---
 import cn from "@/lib/cn";
 import minifuSlug from "@/lib/minifySlug";
-import type { CollectionEntry } from "astro:content";
+import { type CollectionEntry } from "astro:content";
 
 type Props = CollectionEntry<"project">["data"] & {
     textSide: boolean;
@@ -18,26 +18,26 @@ const slug = minifuSlug(slugOrig);
     })}
 >
     <div
-        class="aspect-video border border-gray-300 flex items-center justify-center rounded-xl w-full lg:w-2/3 overflow-hidden"
+        class="flex aspect-video w-full items-center justify-center overflow-hidden rounded-xl border border-gray-300 lg:w-2/3"
     >
         <img
             src={heroImage}
             alt={`hero-image-${slug}`}
-            class="grayscale min-h-full min-w-full object-cover"
+            class="min-h-full min-w-full object-cover grayscale"
             transition:name={`PRHI-${slug}`}
         />
     </div>
-    <div class="flex flex-col gap-2 p-2 md:p-4 md:gap-4 lg:w-1/3">
+    <div class="flex flex-col gap-2 p-2 md:gap-4 md:p-4 lg:w-1/3">
         <h3
             transition:name={`PRT-${slug}`}
-            class="h-min text-ellipsis overflow-hidden flex-[unset_1_min-content] text-nowrap text-xl font-bold tracking-tight"
+            class="h-min flex-[unset_1_min-content] overflow-hidden text-ellipsis text-nowrap text-xl font-bold tracking-tight"
         >
             {title}<sup>{version}</sup>
         </h3>
-        <ul class="flex gap-2 flex-wrap text-sm">
+        <ul class="flex flex-wrap gap-2 text-sm">
             {
                 techStack.map(function (tech) {
-                    return <li class="bg-gray-200 px-2 py-1 rounded-full">{tech}</li>;
+                    return <li class="rounded-full bg-gray-200 px-2 py-1">{tech}</li>;
                 })
             }
         </ul>
