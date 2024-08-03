@@ -3,13 +3,14 @@ import { type CollectionEntry } from "astro:content";
 import BaseLayout from "./BaseLayout.astro";
 
 import formatDate from "@/lib/formatDate";
+import cdnify from "@/lib/cdnify";
 
 type Props = CollectionEntry<"project">["data"] & { slug: CollectionEntry<"project">["slug"] };
 
 const { title, description, keywords, heroImage, techStack, createdAt, version, slug } = Astro.props;
 ---
 
-<BaseLayout title={title} keywords={keywords} description={description}>
+<BaseLayout title={title} keywords={keywords} description={description} image={cdnify(heroImage)}>
     <a class="w-fit underline" href="/project">&leftarrow;&numsp;All Projects</a>
     <h1 class="flex items-center text-xl font-bold md:text-2xl" transition:name={`PRT-${slug}`}>
         {title}<sup>{version}</sup>
@@ -28,7 +29,7 @@ const { title, description, keywords, heroImage, techStack, createdAt, version, 
         class="flex aspect-video items-center justify-center overflow-hidden rounded-2xl border border-gray-300 dark:border-gray-700 md:border-2"
     >
         <img
-            src={heroImage}
+            src={cdnify(heroImage)}
             class="min-h-full min-w-full object-cover grayscale"
             alt={`${title} - Project Hero Image`}
             transition:name={`PRHI-${slug}`}

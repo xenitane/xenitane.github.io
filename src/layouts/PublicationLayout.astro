@@ -4,13 +4,14 @@ import minifuSlug from "@/lib/minifySlug";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 
 import formatDate from "@/lib/formatDate";
+import cdnify from "@/lib/cdnify";
 type Props = CollectionEntry<"publication">["data"] & { slug: CollectionEntry<"publication">["slug"] };
 
 const { title, description, heroImage, keywords, createdAt, slug: slugOrig } = Astro.props;
 const slug = minifuSlug(slugOrig);
 ---
 
-<BaseLayout title={title} description={description} keywords={keywords}>
+<BaseLayout title={title} description={description} keywords={keywords} image={cdnify(heroImage)}>
     <a class="w-fit underline" href="/publication">&leftarrow;&numsp;All Blogs &amp; Articles</a>
     <h1 class="flex items-center text-xl font-bold md:text-2xl" transition:name={`PUT-${slug}`}>
         {title}
@@ -20,7 +21,7 @@ const slug = minifuSlug(slugOrig);
         class="flex aspect-video items-center justify-center overflow-hidden rounded-2xl border border-gray-300 dark:border-gray-700 md:border-2"
     >
         <img
-            src={heroImage}
+            src={cdnify(heroImage)}
             class="min-h-full min-w-full object-cover grayscale"
             alt={`${title} - Project Hero Image`}
             transition:name={`PUHI-${slug}`}

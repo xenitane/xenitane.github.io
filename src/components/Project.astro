@@ -1,6 +1,7 @@
 ---
 import cn from "@/lib/cn";
 import minifuSlug from "@/lib/minifySlug";
+import cdnify from "@/lib/cdnify";
 import { type CollectionEntry } from "astro:content";
 
 type Props = CollectionEntry<"project">["data"] & {
@@ -21,7 +22,7 @@ const slug = minifuSlug(slugOrig);
         class="flex aspect-video w-full items-center justify-center overflow-hidden rounded-xl border border-gray-300 dark:border-gray-700 md:border-2 lg:w-2/3"
     >
         <img
-            src={heroImage}
+            src={cdnify(heroImage)}
             alt={`hero-image-${slug}`}
             class="min-h-full min-w-full object-cover grayscale"
             transition:name={`PRHI-${slug}`}

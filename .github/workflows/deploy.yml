@@ -11,6 +11,10 @@ on:
 permissions:
     contents: write
 
+env:
+    SITE_URL: ${{ vars.SITE_URL }}
+    CDN_URL: ${{ vars.CDN_URL }}
+
 jobs:
     build:
         name: Build

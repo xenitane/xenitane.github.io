@@ -1,6 +1,7 @@
 ---
 import { type CollectionEntry } from "astro:content";
 import minifuSlug from "@/lib/minifySlug";
+import cdnify from "@/lib/cdnify";
 
 type Props = CollectionEntry<"publication">["data"] & {
     slug: CollectionEntry<"publication">["slug"];
@@ -16,7 +17,7 @@ const slug = minifuSlug(slugOrig);
 >
     <img
         transition:name={`PUHI-${slug}`}
-        src={heroImage}
+        src={cdnify(heroImage)}
         alt={`hero-image-${slug}`}
         class="min-h-full min-w-full object-cover grayscale"
     />

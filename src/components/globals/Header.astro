@@ -1,4 +1,6 @@
 ---
+import cdnify from "@/lib/cdnify";
+
 const links: [string, string][] = [
     ["/", "Home"],
     ["/about", "About"],
@@ -9,11 +11,11 @@ const links: [string, string][] = [
 ---
 
 <header
-    class="dark:shadow-sm-dark dark:drop-shadow-dark fixed top-0 z-10 flex h-16 w-full items-center bg-white px-4 text-black shadow-sm drop-shadow dark:bg-black dark:text-white md:h-[72px] md:p-5 lg:h-20 xl:px-6"
+    class="fixed top-0 z-10 flex h-16 w-full items-center bg-white px-4 text-black shadow-sm drop-shadow dark:bg-black dark:text-white dark:shadow-sm-dark dark:drop-shadow-dark md:h-[72px] md:p-5 lg:h-20 xl:px-6"
 >
     <div class="flex w-full items-center gap-4">
         <a class="flex gap-2" href="/">
-            <img src="/logo.png" class="aspect-square h-9" alt="logo" />
+            <img src={cdnify("/logo.png")} class="aspect-square h-9" alt="logo" />
             <span class="text-3xl font-semibold tracking-tighter">Xenitane&trade;</span>
         </a>
         <input type="checkbox" id="__is_nav_sidebar_open" class="hidden" />
@@ -47,7 +49,9 @@ const links: [string, string][] = [
         <button
             class="xen-bg-primary ml-auto flex h-9 w-9 items-center justify-center rounded focus-within:ring-offset-0 focus-visible:outline-none focus-visible:ring-0 md:ml-0"
             @click="__theme__toggle__()"
+            aria-label="theme-switch-button"
         >
+            <span class="sr-only">theme switch button</span>
             <svg
                 class="absolute h-6 w-6 scale-100 transition-all duration-300 ease-in-out dark:scale-0"
                 viewBox="0 0 24 24"

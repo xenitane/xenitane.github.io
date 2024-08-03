@@ -10,3 +10,5 @@ __mocks__/
 src/theme/
 *.md
 *.mdx
+
+pnpm-lock.yaml
