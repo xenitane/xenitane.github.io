@@ -10,23 +10,23 @@ const { title, description, keywords, heroImage, techStack, createdAt, version, 
 ---
 
 <BaseLayout title={title} keywords={keywords} description={description}>
-    <a class="underline" href="/project">&leftarrow;&numsp;All Projects</a>
-    <h1 class="flex items-center text-nowrap text-xl font-bold md:text-2xl" transition:name={`PRT-${slug}`}>
-        <span class="overflow-hidden text-ellipsis">
-            {title}<sup>{version}</sup>
-        </span>
+    <a class="w-fit underline" href="/project">&leftarrow;&numsp;All Projects</a>
+    <h1 class="flex items-center text-xl font-bold md:text-2xl" transition:name={`PRT-${slug}`}>
+        {title}<sup>{version}</sup>
     </h1>
 
     <div class="flex flex-wrap items-center gap-2">
         <sapn>Build With:</sapn>
         {
             techStack.map(function (tech) {
-                return <span class="rounded-full bg-gray-200 px-2 py-1 text-sm">{tech}</span>;
+                return <span class="rounded-full bg-gray-200 px-2 py-1 text-sm dark:bg-gray-800">{tech}</span>;
             })
         }
     </div>
     <span class="ml-auto min-w-fit text-nowrap">on {formatDate(createdAt)}</span>
-    <div class="flex aspect-video items-center justify-center overflow-hidden rounded-2xl border border-gray-300">
+    <div
+        class="flex aspect-video items-center justify-center overflow-hidden rounded-2xl border border-gray-300 dark:border-gray-700 md:border-2"
+    >
         <img
             src={heroImage}
             class="min-h-full min-w-full object-cover grayscale"

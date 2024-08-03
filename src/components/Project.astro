@@ -12,13 +12,13 @@ const slug = minifuSlug(slugOrig);
 ---
 
 <div
-    class={cn("flex w-full flex-col gap-4 overflow-hidden rounded-2xl p-4 bg-gray-100/70", {
+    class={cn("flex w-full flex-col gap-4 overflow-hidden rounded-2xl p-4 bg-gray-100/70 dark:bg-gray-900/70", {
         "lg:flex-row": !textSide,
         "lg:flex-row-reverse": textSide,
     })}
 >
     <div
-        class="flex aspect-video w-full items-center justify-center overflow-hidden rounded-xl border border-gray-300 lg:w-2/3"
+        class="flex aspect-video w-full items-center justify-center overflow-hidden rounded-xl border border-gray-300 dark:border-gray-700 md:border-2 lg:w-2/3"
     >
         <img
             src={heroImage}
@@ -37,14 +37,14 @@ const slug = minifuSlug(slugOrig);
         <ul class="flex flex-wrap gap-2 text-sm">
             {
                 techStack.map(function (tech) {
-                    return <li class="rounded-full bg-gray-200 px-2 py-1">{tech}</li>;
+                    return <li class="rounded-full bg-gray-200 px-2 py-1 dark:bg-gray-800">{tech}</li>;
                 })
             }
         </ul>
         <p>{description.slice(0, 80)}{description.length > 80 && "\u2026"}</p>
         <a
             href={`/project/${slug}`}
-            class={cn("mt-auto bg-gray-200 rounded-xl py-2 px-4 w-fit text-nowrap", {
+            class={cn("mt-auto bg-gray-200 dark:bg-gray-800 rounded-xl py-2 px-4 w-fit text-nowrap", {
                 "md:ml-auto": !textSide,
                 "md:mr-auto": textSide,
             })}>Read More</a
