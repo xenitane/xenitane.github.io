@@ -14,6 +14,7 @@ permissions:
 env:
     SITE_URL: ${{ vars.SITE_URL }}
     CDN_URL: ${{ vars.CDN_URL }}
+    DOMAIN_NAME: ${{ vars.DOMAIN_NAME }}
 
 jobs:
     build:
@@ -31,6 +32,7 @@ jobs:
                   cache: "pnpm"
             - run: pnpm install --frozen-lockfile
             - run: pnpm build
+            - run: echo $DOMAIN_NAME > ./dist/CNAME
             - uses: peaceiris/actions-gh-pages@v4
               with:
                   github_token: ${{ secrets.GITHUB_TOKEN }}
