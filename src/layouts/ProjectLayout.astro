@@ -7,10 +7,11 @@ import cdnify from "@/lib/cdnify";
 
 type Props = CollectionEntry<"project">["data"] & { slug: CollectionEntry<"project">["slug"] };
 
-const { title, description, keywords, heroImage, techStack, createdAt, version, slug } = Astro.props;
+const { metaContent, techStack, createdAt, version, slug } = Astro.props;
+const { title, heroImage } = metaContent;
 ---
 
-<BaseLayout title={title} keywords={keywords} description={description} image={cdnify(heroImage)}>
+<BaseLayout {...metaContent} image={cdnify(heroImage)}>
     <a class="w-fit underline" href="/project">&leftarrow;&numsp;All Projects</a>
     <h1 class="flex items-center text-xl font-bold md:text-2xl" transition:name={`PRT-${slug}`}>
         {title}<sup>{version}</sup>
@@ -35,5 +36,94 @@ const { title, description, keywords, heroImage, techStack, createdAt, version, 
             transition:name={`PRHI-${slug}`}
         />
     </div>
-    <slot />
+    <div id="project-content">
+        <slot />
+    </div>
 </BaseLayout>
+
+<style is:global>
+    #project-content {
+        @apply flex flex-col gap-2;
+        h2 {
+            @apply text-xl font-bold md:text-2xl;
+        }
+        h2:not(:first-of-type) {
+            @apply mt-2;
+        }
+        p {
+            @apply text-wrap;
+            * {
+                @apply text-wrap;
+            }
+            > code {
+                @apply rounded bg-gray-400/20 px-1 py-px dark:bg-gray-500/40;
+            }
+        }
+        h3 {
+            @apply text-lg md:text-xl;
+        }
+        img {
+            @apply grayscale;
+        }
+        ul {
+            @apply list-disc space-y-1 pl-6;
+        }
+        /* for the code blocks */
+        [data-rehype-pretty-code-figure] {
+            @apply relative;
+
+            [data-rehype-pretty-code-title] {
+                @apply mt-0 inline-flex h-12 items-center rounded-tl-md rounded-tr-md;
+                @apply border-t-2 border-indigo-500 bg-[#1e1e2e] px-4 text-sm text-[#cdd6f4];
+            }
+
+            [data-rehype-pretty-code-title] + pre {
+                @apply rounded-tl-none;
+            }
+
+            [data-rehype-pretty-code-title] ~ [data-copy] {
+                @apply top-16;
+            }
+
+            [data-copy] {
+                @apply absolute right-4 top-4 rounded-md border border-gray-500 bg-white p-2 text-sm text-gray-900 transition-all hover:bg-gray-400 disabled:pointer-events-none disabled:bg-gray-400;
+            }
+
+            pre {
+                @apply mx-auto overflow-auto rounded-md p-4;
+                @apply scrollbar-thin scrollbar-thumb-gray-500 scrollbar-thumb-rounded;
+
+                [data-line] {
+                    @apply -mx-4 px-6;
+                }
+
+                [data-highlighted-line] {
+                    @apply bg-white/10;
+                }
+
+                [data-highlighted-chars] {
+                    @apply rounded-md p-1;
+                }
+
+                mark {
+                    @apply bg-gray-800 text-inherit;
+                }
+            }
+
+            code {
+                @apply text-base !leading-loose md:text-base;
+
+                &[data-line-numbers] {
+                    counter-reset: line;
+
+                    > [data-line]::before {
+                        counter-increment: line;
+                        content: counter(line);
+
+                        @apply mr-4 inline-block w-4 text-right text-gray-500;
+                    }
+                }
+            }
+        }
+    }
+</style>

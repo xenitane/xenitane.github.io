@@ -36,19 +36,19 @@ const Content = (await Astro.glob("@/data/about.md"))[0].Content;
 <style is:global>
     #about-content {
         h1 {
-            @apply text-3xl font-bold tracking-tighter;
+            @apply text-2xl font-bold tracking-tighter md:text-3xl;
         }
         blockquote {
             @apply border-l-[6px] border-gray-200 px-3 py-1 text-gray-800 dark:border-gray-800 dark:text-gray-200;
         }
+        * a {
+            @apply underline;
+        }
         h2 {
-            @apply text-2xl font-bold;
-            + * a {
-                @apply underline;
-            }
+            @apply text-xl font-bold md:text-2xl;
         }
         h3 {
-            @apply text-xl font-bold;
+            @apply text-lg font-bold md:text-xl;
             + * {
                 @apply font-semibold;
                 em {
@@ -57,7 +57,7 @@ const Content = (await Astro.glob("@/data/about.md"))[0].Content;
             }
         }
         ul {
-            @apply list-disc space-y-1 px-6;
+            @apply list-disc space-y-1 pl-6;
         }
     }
 </style>

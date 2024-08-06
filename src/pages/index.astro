@@ -65,7 +65,7 @@ const clicks = (await getCollection("click")).sort(sortByLatest).slice(0, MAX_CL
                 </p>
             </div>
             <div class="ml-auto flex aspect-[4/3] items-center justify-center overflow-hidden rounded-xl lg:w-1/3">
-                <img src={cdnify("/xenitane-dp.jpg")} alt="Cover image" class="center grayscale" />
+                <img src={cdnify([true, "/xenitane-dp.jpg"])} alt="Cover image" class="center grayscale" />
             </div>
         </div>
         <div class="flex flex-col gap-2">
@@ -73,20 +73,16 @@ const clicks = (await getCollection("click")).sort(sortByLatest).slice(0, MAX_CL
             <blockquote
                 class="border-l-[6px] border-gray-200 p-3 leading-5 text-gray-700 dark:border-gray-800 dark:text-gray-300"
             >
-                <p>Your Friendly, Nerdy, Geeky Software Developer, Wizard of Numbers and Sorcerer of Code</p>
+                <p>Your Friendly, Geeky Software Developer, Wizard of Numbers and Sorcerer of Code.</p>
             </blockquote>
             <p class="leading-5 text-gray-800 dark:text-gray-200">
-                I like maths, solving problems, programming/coding to make stuff for fun
-                <br />
-                that sometime make someone smile.
+                I like maths, solving problems, programming/coding to make stuff that sometime make someone smile.
             </p>
             <p class="leading-5 text-gray-800 dark:text-gray-200">
-                I love to collaborate to build new things, learn, contribute, and develop new skills.
+                I love to collaborate to develop new skills and things and also contribute.
             </p>
             <p class="leading-5 text-gray-800 dark:text-gray-200">
-                Enthusiast for all things hardware, mobile/native/embedded, systems, web,
-                <br />
-                sometimes garnished with ops, DS/ML.
+                Enthusiast for all things hardware, embedded, low-level, web, sometimes garnished with ops, DS/ML.
             </p>
             <p class="font-bold leading-5 text-gray-800 dark:text-gray-200">
                 Living in the terminal, arch/zsh/tmux/nvim + tools. Life's too short to program in JAVA.
@@ -133,9 +129,14 @@ const clicks = (await getCollection("click")).sort(sortByLatest).slice(0, MAX_CL
             ) : (
                 <div class="flex w-full rounded-lg bg-gray-100/70 dark:bg-gray-900/70">
                     <ul class="grid w-full gap-2 space-y-2 p-4 md:grid-cols-2">
-                        {projects.map(function (project) {
+                        {projects.map(function ({
+                            data: {
+                                metaContent: { title },
+                            },
+                            slug,
+                        }) {
                             return (
-                                <IconPoint content={project.data.title} link={`/project/${minifuSlug(project.slug)}`}>
+                                <IconPoint content={title} link={`/project/${minifuSlug(slug)}`}>
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
                                         viewBox="0 0 512 512"
@@ -167,12 +168,14 @@ const clicks = (await getCollection("click")).sort(sortByLatest).slice(0, MAX_CL
             ) : (
                 <div class="flex w-full rounded-lg bg-gray-100/70 dark:bg-gray-900/70">
                     <ul class="grid w-full gap-2 space-y-2 p-4 md:grid-cols-2">
-                        {publications.map(function (publication) {
+                        {publications.map(function ({
+                            slug,
+                            data: {
+                                metaContent: { title },
+                            },
+                        }) {
                             return (
-                                <IconPoint
-                                    content={publication.data.title}
-                                    link={`/publication/${minifuSlug(publication.slug)}`}
-                                >
+                                <IconPoint content={title} link={`/publication/${minifuSlug(slug)}`}>
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
                                         viewBox="0 0 24 24"

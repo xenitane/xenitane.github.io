@@ -1,9 +1,11 @@
 ---
 isDraft: false
-title: "Electric Flux Through Rectangular Sheet"
-description: "Solving a definite integral to find the electric flux through a rectangular sheet by a finite charge."
-heroImage: "/publication/electric-flux-through-rectangular-sheet.png"
-keywords: ["physics", "electrostats", "gauss law", "integration"]
+metaContent: {
+    title: "Electric Flux Through Rectangular Sheet",
+    description: "Solving a definite integral to find the electric flux through a rectangular sheet by a finite charge.",
+    heroImage: [true,"/publication/electric-flux-through-rectangular-sheet.png"],
+    keywords: ["physics", "electrostats", "gauss law", "integration"]
+}
 createdAt: "03 Dec 2023"
 ---
 

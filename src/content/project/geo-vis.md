@@ -1,9 +1,11 @@
 ---
-title: "Geometric Visualizer"
-description: "A simple application to visualize fractal/chaotic geometry."
-heroImage: "/project/geo-vis.png"
+metaContent: {
+    title: "Geometric Visualizer",
+    description: "A simple application to visualize fractal/chaotic geometry.",
+    heroImage: [true, "/project/geo-vis.png"],
+    keywords: ["geometry", "fractals", "attractors", "recursion"]
+}
 techStack: ["react", "tailwindcss"]
-keywords: ["geometry", "fractals", "attractors", "recursion"]
 version: "0.8"
 createdAt: "27 Dec 2023"
 ---

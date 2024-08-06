@@ -7,13 +7,16 @@ import formatDate from "@/lib/formatDate";
 import cdnify from "@/lib/cdnify";
 type Props = CollectionEntry<"publication">["data"] & { slug: CollectionEntry<"publication">["slug"] };
 
-const { title, description, heroImage, keywords, createdAt, slug: slugOrig } = Astro.props;
+const { metaContent, createdAt, slug: slugOrig } = Astro.props;
+const { title, heroImage } = metaContent;
 const slug = minifuSlug(slugOrig);
+
+import "@fontsource/geist-mono";
 ---
 
-<BaseLayout title={title} description={description} keywords={keywords} image={cdnify(heroImage)}>
+<BaseLayout {...metaContent} image={cdnify(heroImage)}>
     <a class="w-fit underline" href="/publication">&leftarrow;&numsp;All Blogs &amp; Articles</a>
-    <h1 class="flex items-center text-xl font-bold md:text-2xl" transition:name={`PUT-${slug}`}>
+    <h1 class="flex items-center text-2xl font-bold md:text-3xl" transition:name={`PUT-${slug}`}>
         {title}
     </h1>
     <span class="min-w-fit text-nowrap">on {formatDate(createdAt)}</span>
@@ -34,9 +37,9 @@ const slug = minifuSlug(slugOrig);
 
 <style is:global>
     #publication-content {
-        @apply flex flex-col gap-4;
+        @apply flex flex-col gap-2;
         h2 {
-            @apply text-2xl font-bold;
+            @apply text-xl font-bold md:text-2xl;
         }
         h2:not(:first-of-type) {
             @apply mt-2;
@@ -46,12 +49,18 @@ const slug = minifuSlug(slugOrig);
             * {
                 @apply text-wrap;
             }
+            > code {
+                @apply rounded bg-gray-400/20 px-1 py-px dark:bg-gray-500/40;
+            }
         }
         h3 {
-            @apply text-xl;
+            @apply text-lg md:text-xl;
         }
         img {
             @apply grayscale;
+        }
+        ul {
+            @apply list-disc space-y-1 pl-6;
         }
         /* for the code blocks */
         [data-rehype-pretty-code-figure] {
@@ -75,6 +84,7 @@ const slug = minifuSlug(slugOrig);
             }
 
             pre {
+                font-family: "Geist Mono";
                 @apply mx-auto overflow-auto rounded-md p-4;
                 @apply scrollbar-thin scrollbar-thumb-gray-500 scrollbar-thumb-rounded;
 

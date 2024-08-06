@@ -1,7 +1,7 @@
 :root,
 [data-rehype-pretty-code-figure] {
     font-family:
-        "JetBrains Mono",
+        "Geist Sans",
         system-ui,
         -apple-system,
         BlinkMacSystemFont,
@@ -13,7 +13,6 @@
         "Open Sans",
         "Helvetica Neue",
         sans-serif;
-    --font-sans: "JetBrains Mono";
 }
 
 *::-webkit-scrollbar {

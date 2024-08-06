@@ -8,7 +8,14 @@ type Props = CollectionEntry<"project">["data"] & {
     textSide: boolean;
     slug: CollectionEntry<"project">["slug"];
 };
-const { heroImage, slug: slugOrig, title, textSide, techStack, description, version } = Astro.props;
+const {
+    slug: slugOrig,
+    textSide,
+    techStack,
+    version,
+    metaContent: { title, description, heroImage },
+} = Astro.props;
+
 const slug = minifuSlug(slugOrig);
 ---
 

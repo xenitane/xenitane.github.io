@@ -1,5 +1,5 @@
 // for layout
-export const SITE_TITLE = "Xenitane (xenitane) | xenitane.github.io";
+export const SITE_TITLE = `Xenitane (xenitane) | ${import.meta.env.DOMAIN_NAME}`;
 
 // for homepage
 export const MAX_PUBLICATIONS_ON_HOME = 8;
