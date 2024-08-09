@@ -27,7 +27,7 @@
         "clsx": "^2.1.1",
         "prettier-plugin-astro": "^0.14.1",
         "prettier-plugin-organize-imports": "^4.0.0",
-        "prettier-plugin-tailwindcss": "^0.6.5",
+        "prettier-plugin-tailwindcss": "^0.6.6",
         "rehype-mathjax": "^6.0.0",
         "rehype-pretty-code": "^0.13.2",
         "remark-math": "^6.0.0",
