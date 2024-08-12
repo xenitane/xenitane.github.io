@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # sitemap urls
-SITEMAP_URLS=("https://www.xenitane.xyz/geo-vis/sitemap-index.xml")
+SITEMAP_URLS=("https://xenitane.xyz/geo-vis/sitemap-index.xml")
 
 # sitemap index file
 SITEMAP_FILE=${1:-"./dist/sitemap-index.xml"}

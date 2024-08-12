@@ -7,7 +7,7 @@ import { integrations, markdownConfig as markdown } from "./config/astrojs.integ
 export default defineConfig({
     integrations,
     markdown,
-    site: "https://www.xenitane.xyz",
+    site: "https://xenitane.xyz",
     trailingSlash: "never",
     build: { assets: "assets" },
     devToolbar: { enabled: false },

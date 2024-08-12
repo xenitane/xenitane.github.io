@@ -1,7 +1,49 @@
 {
-    "name": "xenitane-github-io",
+    "name": "xenitane-xyz",
     "type": "module",
     "version": "0.1.0",
+    "private": true,
+    "description": "my portfolio website code",
+    "keywords": [
+        "astro",
+        "portfolio",
+        "website",
+        "javascript",
+        "typescript",
+        "alpinejs",
+        "tailwindcss",
+        "tailwind",
+        "markdown",
+        "blogging"
+    ],
+    "homepage": "https://xenitane.xyz/",
+    "bugs": {
+        "url": "https://www.github.com/xenitane/xenitane.github.io/issues"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://www.github.com/xenitane/xenitane.github.io"
+    },
+    "license": "GLWTFSPL",
+    "author": {
+        "name": "xenitane",
+        "url": "https://xenitane.xyz"
+    },
+    "engines": {
+        "node": ">=18"
+    },
+    "browserList": {
+        "production": [
+            ">0.2%",
+            "not dead",
+            "not op_mini all"
+        ],
+        "development": [
+            "last 1 chrome version",
+            "last 1 firefox version",
+            "last 1 safari version"
+        ]
+    },
     "scripts": {
         "dev": "astro dev",
         "build": "astro check && astro build",
