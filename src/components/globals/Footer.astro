@@ -1,13 +1,15 @@
 ---
 import FooterLink from "@/components/FooterLink.astro";
+import cdnify from "@/lib/cdnify";
 ---
 
 <footer
     class="flex flex-col items-center bg-white px-[max(16px,calc(50%-640px))] py-4 text-black shadow-sm-neg drop-shadow-neg dark:bg-black dark:text-white dark:drop-shadow-neg-dark"
 >
     <div class="flex w-full gap-2">
-        <div class="flex flex-1 justify-start">
-            <div class="text-xl font-semibold tracking-tight">Xenitane&trade;</div>
+        <div class="flex flex-1 items-center gap-1.5 text-xl font-medium tracking-tight">
+            <img src={cdnify([true, "/logo.png"])} class="h-7 w-7" />
+            Xenitane&trade;
         </div>
         <div id="footer-icon" class="flex flex-1 justify-end gap-3">
             <FooterLink href="https://www.github.com/xenitane" text="Github">
@@ -67,7 +69,5 @@ import FooterLink from "@/components/FooterLink.astro";
         </div>
     </div>
     <div class="my-2 h-0.5 w-full bg-gray-700 dark:bg-gray-300"></div>
-    <div class="text-s flex text-center">
-        <p class="text-[rgb(132_139_152)]">Copyright &copy; 2024 Xenitane&trade; All Rights Reserved &reg;</p>
-    </div>
+    <div class="w-full text-gray-500">&copy; {new Date().getFullYear()} Xenitane&trade;</div>
 </footer>
