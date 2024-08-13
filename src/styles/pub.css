@@ -56,6 +56,9 @@
             @apply border-b;
         }
     }
+    a {
+        @apply underline;
+    }
     /* for the code blocks */
     [data-rehype-pretty-code-figure] {
         @apply relative;

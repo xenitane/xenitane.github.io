@@ -14,4 +14,4 @@ A simple web application I built after learning about fractal geometry from a **
 
 Now, it's evolving from just fractals to more mathematical structures, and as I add them I too uncover more about mathematics, geometry and how to programm these things.
 
-**[Visit here](https://xenitane.github.io/geo-vis)**
+**[Visit here](https://xenitane.xyz/geo-vis)**
