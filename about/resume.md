@@ -19,21 +19,39 @@ Software Development Engineer _(Jul 2022 - Jul 2023)_
 -   Singlehandedly developed and maintained various plugins/extensions for **Magento2** WYSIWYG website builder, fulfilling the usiness requirements of the marketing and design teams.
 -   Worked extensively on the collection of **User Activity** over the company homepage via **Moengage** Web SDK and displaying **Geographical Data** using **MapLibre** libraries.
 
+## Education
+
+### Indian Institute of Technology Guwahati
+
+Computer Science _(Bachelor of Technology)_
+
+Jul 2018 - May 2022
+
 ## Projects
 
-### Seam Carving
+### Tasks Manager
+
+Individual Project _(Aug 2024)_
+
+-   A simple task tracking application back-end written in go.
+-   User authentication is done via JWT.
+-   Users can manage their plans by creating tasks with detailed description and a due date.
+-   **Tach**: Go, Fiber, Postgres
+
+### Seam Carver
 
 Individual Project _(Apr 2024)_
 
--   An implementation of the seam carving algorithm to resize images across one axis without loosing whole objects.
--   This is achieved without machine learning, instead just some image processing to find egdes in image.
+-   A basic implementation of the seam-carving algorithm in C to resize image across one axis without losing details.
+-   This Algorithm does not any AI/ML models to achieve the aforementioned goal.
+-   The program iterates over the image and remove the pixels across a seam with minimum energy as to not disturb the flow of objects.
 -   **Tech**: C
 
-### JIT Compiler for BrainF\*ck
+### JIT Compiler for BarinF&bullet;ck
 
 Individual Project _(Feb 2024)_
 
--   A compiler for BrainF\*ck, using JIT compilation for optimization.
+-   A compiler for BrainF&bullet;ck, using JIT compilation for optimization.
 -   Compared to a standard compiler, this minimizes instruction cycles by merging similar instructions into one.
 -   **Tech**: C, x86 Assembly
 
@@ -49,25 +67,18 @@ Individual Project _(Jul 2023)_
 
 Team Project _(Jul 2022)_
 
--   Designed complete architecture for a social media application where users can post content, follow each other, have a ews feed, and react/comment on posts.
--   Led a team of 7 people where we collaborated and distributed the duties to efficiently work and deliver the project ithin the deadline, ensuring performance and security.
+-   A social media application with the base functionality of on boarding, posts, reactions, comments, connecting, feed.
+-   This project focuses on implementing a secure username and password authentication system for accessing and protecting sensitive information.
 -   **Tech**: Java, Spring Boot, MongoDB, Heroku, React
-
-## Education
-
-### Indian Institute of Technology Guwahati
-
-Computer Science _(Bachelor of Technology)_
-
-Jul 2018 - May 2022
 
 ## Technical Skills
 
--   **Languages**: C/C++, JS/TS, Java, Go, Python
--   **Frameworks**: GoFiber, React, Spring Boot, Flutter
--   **Databases**: MySQL, PostgreSQL, MongoDB
--   **Tools**: Git, NodeJS, Shell, Docker
--   **Learning**: Rust, Assembly, Web-Sockets
+-   **Fundamentals**: Data Structures, Algorithms, Optimization, System Design, Debugging
+-   **Languages**: C/C++, JS/TS, Java, Go, Python, Zig, Rust, Haskell
+-   **Frameworks**: Fiber, Echo, Spring Boot, Astro
+-   **Libraries**: React, AlpineJS, HTMX, SolidJS
+-   **Databases**: MySQL, PostgreSQL, MongoDB, Redis
+-   **Tools**: Git, Bash, Docker, Neovim, Make
 
 ## Contact
 
