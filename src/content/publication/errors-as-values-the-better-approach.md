@@ -19,7 +19,7 @@ And in this transition I came to a realization, that `try catch` kinda sucks. An
 
 ## The Issue With `try catch`
 
-When working with a system of `try catch`, you never know which function might throw a method unless it's marked that it might, and for that reason it's the responsibility of the programmer to catch it, or they can just leave it as is the the function they wrote will throw that error up the call stack. And there's the issue, what if while writing the code, the forget both to handle the exception and mark the function as "throwing", the next person who will use that function, will just be bewildered when their application fails.
+When working with a system of `try catch`, you never know which function might throw an exception unless it's marked that it might, and for that reason it's the responsibility of the programmer to catch it, or they can just leave it as is the the function they wrote will throw that error up the call stack. And there's the issue, what if while writing the code, the forget both to handle the exception and mark the function as "throwing", the next person who will use that function, will just be bewildered when their application fails.
 
 This kind of situation can occur to anyone, and it's plain annoying.
 
