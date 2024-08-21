@@ -1,7 +1,7 @@
 ---
 metaContent: {
-    title: "BrainF*ck Compiler",
-    description: "A compiler/interpreter for brainf*ck with jitting.",
+    title: "BrainF\u2022ck Compiler",
+    description: "A compiler/interpreter for brainf\u2022ck with jitting.",
     keywords: ["compiler", "interpreter"],
     heroImage: [true,"/project/bf-jit.png"]
 }

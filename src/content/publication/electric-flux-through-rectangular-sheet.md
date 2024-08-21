@@ -4,12 +4,12 @@ metaContent: {
     title: "Electric Flux Through Rectangular Sheet",
     description: "Solving a definite integral to find the electric flux through a rectangular sheet by a finite charge.",
     heroImage: [true,"/publication/electric-flux-through-rectangular-sheet.png"],
-    keywords: ["physics", "electrostats", "gauss law", "integration"]
+    keywords: ["physics", "electrostatic", "gauss law", "integration"]
 }
 createdAt: "03 Dec 2023"
 ---
 
-## How things got started
+## How Things Got Started
 
 This story begins in the senior year of my high school, as I was preparing for JEE.
 
@@ -23,19 +23,19 @@ My 16 year old brain wasn't able to solve this problem, as a matter of fact no o
 
 And recently, out of nowhere, my thoughts circle back to this problem and I gave it another go. And this time I was able to solve it, and I want to share what I was able to do here.
 
-## Let's get things in order first
+## Let's Get Things In Order First
 
 **The problem**: _"There is a point charge q, placed at the center of the face of a cube. Find the electric flux passing through the face opposite to the face on which the charge is placed."_
 
 From the diagram we can see that the target square face can be divided into four equal squares around it's center.
 
-And if we find the flux through one quardrant, we can just multiply it by four and we'll get our final result.
+And if we find the flux through one quadrant, we can just multiply it by four and we'll get our final result.
 
-## Let the math begin
+## Let The Math Begin
 
 I mentioned above that we need to find the flux for one square, but what if instead of a square it was a rectangle with different measurements.
 
-So what we'll do is try to find the answer for a rectangle and put the dimentsions of the square in the expression to generate our answer.
+So what we'll do is try to find the answer for a rectangle and put the dimensions of the square in the expression to generate our answer.
 
 $$ \Phi_{(m,n)} = \Large\oint_{R_{(m,n)}}\normalsize\overrightarrow{E}_{(x,y)}\ldotp\text{d}\overrightarrow{s} $$
 
@@ -81,4 +81,6 @@ Now that we have our expression we can get the answer for our original problem t
 
 And that will be $ 4\Phi_{(a/2,a/2)} $. which evaluates to $\dfrac{q\arcsin(0.2)}{\pi\epsilon_{0}}.$
 
-I hope you had fun reading this article and learnt something. Till then, have a great time, bye.
+I hope you had fun reading this article and learnt something.
+
+Till then, I'll be floating around.

@@ -52,7 +52,7 @@ function rehypeAddCopyButtonToCode() {
             if (
                 !(
                     "data-rehype-pretty-code-figure" in (node.properties ?? []) &&
-                    !["pre", "figcaption"].includes(node.children[0]?.tagName)
+                    ["pre", "figcaption"].includes(node.children[0]?.tagName)
                 )
             ) {
                 return;
