@@ -19,7 +19,7 @@ And in this transition I came to a realization, that `try catch` kinda sucks. An
 
 ## The Issue With `try catch`
 
-When working with a system of `try catch`, you never know which function might throw an exception unless it's marked that it might, and for that reason it's the responsibility of the programmer to catch it, or they can just leave it as is the the function they wrote will throw that error up the call stack. And there's the issue, what if while writing the code, the forget both to handle the exception and mark the function as "throwing", the next person who will use that function, will just be bewildered when their application fails.
+When working with a system of `try catch`, you never know which function might throw an exception unless it's marked that it might, and for that reason it's the responsibility of the programmer to catch it, or they can just leave it as is the the function they wrote will throw that error up the call stack. And there's the issue, what if while writing the code, they forget both to handle the exception and mark the function as "throwing", the next person who will use that function, will just be bewildered when their application fails.
 
 This kind of situation can occur to anyone, and it's plain annoying.
 
@@ -39,30 +39,30 @@ class Example{
 }
 ```
 
-In the above case we don't know for sure which function call is responsible for the error.
+In the above case we don't know for sure which function call is responsible for the exception, the function is not marked as something that can throw exception, cause the catch block might just throw it again.
 
 The issues:
 
 - if uncaught, huge stack-dumps
 - cleanup is a nightmare
 - hard to find source in large try blocks
-- the control-flow of the gets highjacked
+- the control-flow gets highjacked
 
-Now don't get me wrong, if done properly, we can avoid a few of the issues i mentioned above.
+Now don't get me wrong, if done properly, we can avoid a few of the issues I mentioned above.
 
 ## Explicit Error Handling
 
 What if our program didn't threw error, but instead returned it just like any normal value.
 
-Let's leap back in time and look at the the beloved programming language `c`, it was simple, if failure occur, just return a reserved special value as the result of the function.
+Let's leap back in time and look at the the beloved programming language `C` , it was simple, if failure occur, just return a reserved special value as the result of the function.
 
-Seems complex! Yeah i know. But hear me out, what if we made doing this simpler? What if we return a combination of the result and error together through, let's say a wrapper structure/type, union, tuple etc.
+Seems complex! Yeah i know. But hear me out, what if we made doing this simpler? What if we return a combination of the result and error together through, let's say through a wrapper structure/type, union, tuple etc.
 
 Well, there we have it, some modern programming language creators identified this and designed programming languages where error are treated and passed around just like values.
 
 Some examples of this kind of languages are [**`Rust`**](https://www.rust-lang.org/), [**`Zig`**](https://ziglang.org/), [**`Go`**](https://go.dev/), [**`Odin`**](https://odin-lang.org/) and some others that I'm not aware of at the time of writing. Here's How they do it:
 
-- Rust: It has two special types, `Result` and `Option` which the programmer can use to return either the result or the error, and this forces you to manage the errors as you receive them.
+- Rust: It has two special types, `Result` type which the programmer can use to return either the result or the error, and this forces you to manage the errors as you receive them.
 - Zig: You have to mark a function that will return an error and any function that will receive an error if it wants to return it too, otherwise process the error then and there.
 - Go: In Go you can return tuples aka multiple values at once. So if you are concerned that something can go wrong(and believe me it will), you can include and error among your return values which the receiver is forced to process.
 - Odin: Odin follows an approach that's a mix of all three above in my opinion.
