@@ -118,7 +118,7 @@
 <p>Up till last year, I was riding the train on Object Oriented Programming design patterns, which I have come to dislike. But now more than anything, I am a bigger fan of Procedural Programming also taking a keen interest in the Functional Paradigm.</p>
 <p>And in this transition I came to a realization, that <code>try catch</code> kinda sucks. And returning error as a value is much more convenient, both syntactically and for the flow of the program.</p>
 <h2 id="the-issue-with-try-catch">The Issue With <code>try catch</code></h2>
-<p>When working with a system of <code>try catch</code>, you never know which function might throw an exception unless it’s marked that it might, and for that reason it’s the responsibility of the programmer to catch it, or they can just leave it as is the the function they wrote will throw that error up the call stack. And there’s the issue, what if while writing the code, the forget both to handle the exception and mark the function as “throwing”, the next person who will use that function, will just be bewildered when their application fails.</p>
+<p>When working with a system of <code>try catch</code>, you never know which function might throw an exception unless it’s marked that it might, and for that reason it’s the responsibility of the programmer to catch it, or they can just leave it as is the the function they wrote will throw that error up the call stack. And there’s the issue, what if while writing the code, they forget both to handle the exception and mark the function as “throwing”, the next person who will use that function, will just be bewildered when their application fails.</p>
 <p>This kind of situation can occur to anyone, and it’s plain annoying.</p>
 <p>A simple example to demonstrate:</p>
 <figure data-rehype-pretty-code-figure=""><pre style="background-color:#1e1e2e;color:#cdd6f4" tabindex="0" data-language="java" data-theme="catppuccin-mocha"><code data-line-numbers="" data-language="java" data-theme="catppuccin-mocha" style="display: grid;" data-line-numbers-max-digits="2"><span data-line=""><span style="color:#CBA6F7">class</span><span style="color:#F9E2AF;font-style:italic"> Example</span><span style="color:#9399B2">{</span></span>
@@ -132,23 +132,23 @@
 <span data-line=""><span style="color:#9399B2">        }</span></span>
 <span data-line=""><span style="color:#9399B2">    }</span></span>
 <span data-line=""><span style="color:#9399B2">}</span></span></code></pre><button data-copy="" onclick="async function copy(e) { e.preventDefault(); const el = e.currentTarget; const value = el.previousElementSibling.innerText; const originalText = el.innerText; el.disabled = true; await navigator.clipboard.writeText(value); el.innerText = &#x22;copied!&#x22;; setTimeout(() => { el.innerText = originalText; el.disabled = false; }, 3000); }; copy(arguments[0])">copy</button></figure>
-<p>In the above case we don’t know for sure which function call is responsible for the error.</p>
+<p>In the above case we don’t know for sure which function call is responsible for the exception, the function is not marked as something that can throw exception, cause the catch block might just throw it again.</p>
 <p>The issues:</p>
 <ul>
 <li>if uncaught, huge stack-dumps</li>
 <li>cleanup is a nightmare</li>
 <li>hard to find source in large try blocks</li>
-<li>the control-flow of the gets highjacked</li>
+<li>the control-flow gets highjacked</li>
 </ul>
-<p>Now don’t get me wrong, if done properly, we can avoid a few of the issues i mentioned above.</p>
+<p>Now don’t get me wrong, if done properly, we can avoid a few of the issues I mentioned above.</p>
 <h2 id="explicit-error-handling">Explicit Error Handling</h2>
 <p>What if our program didn’t threw error, but instead returned it just like any normal value.</p>
-<p>Let’s leap back in time and look at the the beloved programming language <code>c</code>, it was simple, if failure occur, just return a reserved special value as the result of the function.</p>
-<p>Seems complex! Yeah i know. But hear me out, what if we made doing this simpler? What if we return a combination of the result and error together through, let’s say a wrapper structure/type, union, tuple etc.</p>
+<p>Let’s leap back in time and look at the the beloved programming language <code>C</code> , it was simple, if failure occur, just return a reserved special value as the result of the function.</p>
+<p>Seems complex! Yeah i know. But hear me out, what if we made doing this simpler? What if we return a combination of the result and error together through, let’s say through a wrapper structure/type, union, tuple etc.</p>
 <p>Well, there we have it, some modern programming language creators identified this and designed programming languages where error are treated and passed around just like values.</p>
 <p>Some examples of this kind of languages are <a href="https://www.rust-lang.org/"><strong><code>Rust</code></strong></a>, <a href="https://ziglang.org/"><strong><code>Zig</code></strong></a>, <a href="https://go.dev/"><strong><code>Go</code></strong></a>, <a href="https://odin-lang.org/"><strong><code>Odin</code></strong></a> and some others that I’m not aware of at the time of writing. Here’s How they do it:</p>
 <ul>
-<li>Rust: It has two special types, <code>Result</code> and <code>Option</code> which the programmer can use to return either the result or the error, and this forces you to manage the errors as you receive them.</li>
+<li>Rust: It has two special types, <code>Result</code> type which the programmer can use to return either the result or the error, and this forces you to manage the errors as you receive them.</li>
 <li>Zig: You have to mark a function that will return an error and any function that will receive an error if it wants to return it too, otherwise process the error then and there.</li>
 <li>Go: In Go you can return tuples aka multiple values at once. So if you are concerned that something can go wrong(and believe me it will), you can include and error among your return values which the receiver is forced to process.</li>
 <li>Odin: Odin follows an approach that’s a mix of all three above in my opinion.</li>
