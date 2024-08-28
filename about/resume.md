@@ -77,8 +77,8 @@ Team Project _(Jul 2022)_
 -   **Languages**: C/C++, JS/TS, Java, Go, Python, Zig, Rust, Haskell
 -   **Frameworks**: Fiber, Echo, Spring Boot, Astro
 -   **Libraries**: React, AlpineJS, HTMX, SolidJS
--   **Databases**: MySQL, PostgreSQL, MongoDB, Redis
--   **Tools**: Git, Bash, Docker, Neovim, Make
+-   **Databases**: MySQL, PostgreSQL, MongoDB, SQLite, Redis
+-   **Tools**: Git, Bash, Docker, Neovim, Postman
 
 ## Contact
 
