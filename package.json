@@ -53,10 +53,10 @@
         "reset": "rm -rf ./dist"
     },
     "dependencies": {
-        "@fontsource/geist-mono": "^5.0.3",
+        "@fontsource/geist-mono": "^5.1.0",
         "@fontsource/geist-sans": "^5.0.3",
         "alpinejs": "^3.14.1",
-        "tailwindcss": "^3.4.10"
+        "tailwindcss": "^3.4.15"
     },
     "devDependencies": {
         "@astrojs/alpinejs": "^0.4.0",
@@ -65,7 +65,7 @@
         "@astrojs/sitemap": "^3.1.6",
         "@astrojs/tailwind": "^5.1.0",
         "@types/alpinejs": "^3.13.10",
-        "astro": "^4.15.2",
+        "astro": "^4.16.15",
         "clsx": "^2.1.1",
         "prettier-plugin-astro": "^0.14.1",
         "prettier-plugin-organize-imports": "^4.0.0",
@@ -75,7 +75,7 @@
         "remark-math": "^6.0.0",
         "tailwind-merge": "^2.5.2",
         "tailwind-scrollbar": "^3.1.0",
-        "typescript": "^5.5.4",
+        "typescript": "^5.7.2",
         "unist-util-visit": "^5.0.0"
     }
 }
