@@ -12,8 +12,8 @@ importers:
         specifier: ^5.1.0
         version: 5.1.0
       '@fontsource/geist-sans':
-        specifier: ^5.0.3
-        version: 5.0.3
+        specifier: ^5.1.0
+        version: 5.1.0
       alpinejs:
         specifier: ^3.14.1
         version: 3.14.1
@@ -407,8 +407,8 @@ packages:
   '@fontsource/geist-mono@5.1.0':
     resolution: {integrity: sha512-MDFgmKUdDbV357vD2bOZAro597Nd2md01GAdr3GSZteCJQdPT/UhHUBCAxl9KUiH03aMPFM9Rx7x8/EtrJmpKg==}
 
-  '@fontsource/geist-sans@5.0.3':
-    resolution: {integrity: sha512-oGwoSIqNPMvjtCwj1lZaEr47MeiG27XPhypwkF643u1TQduvwbm3V3hYB01JekeaT34SAGP4I1h+WCdRpJkcwA==}
+  '@fontsource/geist-sans@5.1.0':
+    resolution: {integrity: sha512-4AI/UxIcZiYgK6/cTo4R9oM4VHHLcFdHVv7m2+M42VyY16hhKJADrGe4HPjTxvolmce2IZX/jc6sFJ+GkLB64w==}
 
   '@img/sharp-darwin-arm64@0.33.4':
     resolution: {integrity: sha512-p0suNqXufJs9t3RqLBO6vvrgr5OhgbWp76s5gTRvdmxmuv9E1rcaqGUsl3l4mKVmXPkTkTErXediAui4x+8PSA==}
@@ -3124,7 +3124,7 @@ snapshots:
 
   '@fontsource/geist-mono@5.1.0': {}
 
-  '@fontsource/geist-sans@5.0.3': {}
+  '@fontsource/geist-sans@5.1.0': {}
 
   '@img/sharp-darwin-arm64@0.33.4':
     optionalDependencies:
