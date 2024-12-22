@@ -1,6 +1,6 @@
 ---
 import PublicationLayout from "@/layouts/PublicationLayout.astro";
-import minifuSlug from "@/lib/minifySlug";
+import minifySlug from "@/lib/minifySlug";
 import { type CollectionEntry, getCollection } from "astro:content";
 
 export async function getStaticPaths() {
@@ -10,7 +10,7 @@ export async function getStaticPaths() {
         })
     ).map(function (publication) {
         return {
-            params: { slug: minifuSlug(publication.slug) },
+            params: { slug: minifySlug(publication.slug) },
             props: publication,
         };
     });

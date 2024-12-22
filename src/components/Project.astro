@@ -1,6 +1,6 @@
 ---
 import cn from "@/lib/cn";
-import minifuSlug from "@/lib/minifySlug";
+import minifySlug from "@/lib/minifySlug";
 import cdnify from "@/lib/cdnify";
 import { type CollectionEntry } from "astro:content";
 
@@ -16,7 +16,7 @@ const {
     metaContent: { title, description, heroImage },
 } = Astro.props;
 
-const slug = minifuSlug(slugOrig);
+const slug = minifySlug(slugOrig);
 ---
 
 <div

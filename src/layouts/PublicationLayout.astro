@@ -1,6 +1,6 @@
 ---
 import { type CollectionEntry } from "astro:content";
-import minifuSlug from "@/lib/minifySlug";
+import minifySlug from "@/lib/minifySlug";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 
 import formatDate from "@/lib/formatDate";
@@ -9,7 +9,7 @@ type Props = CollectionEntry<"publication">["data"] & { slug: CollectionEntry<"p
 
 const { metaContent, createdAt, slug: slugOrig } = Astro.props;
 const { title, heroImage } = metaContent;
-const slug = minifuSlug(slugOrig);
+const slug = minifySlug(slugOrig);
 
 import "@fontsource/geist-mono";
 import "@/styles/pub.css";
