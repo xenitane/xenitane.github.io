@@ -4,6 +4,10 @@
 
 ## Experience
 
+### Tradesocio Pvt&period; Ltd&period;
+
+Software Development Engineer _(Dec 2024 - Present)_
+
 ### GLA University
 
 Technical Trainer _(Aug 2023 - Feb 2024)_
