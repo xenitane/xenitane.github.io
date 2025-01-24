@@ -19,8 +19,8 @@ importers:
         version: 3.14.8
     devDependencies:
       '@astrojs/alpinejs':
-        specifier: ^0.4.2
-        version: 0.4.2(@types/alpinejs@3.13.11)(alpinejs@3.14.8)
+        specifier: ^0.4.3
+        version: 0.4.3(@types/alpinejs@3.13.11)(alpinejs@3.14.8)
       '@astrojs/check':
         specifier: ^0.9.4
         version: 0.9.4(prettier-plugin-astro@0.14.1)(prettier@3.4.2)(typescript@5.7.2)
@@ -88,8 +88,8 @@ packages:
   '@asamuzakjp/dom-selector@2.0.2':
     resolution: {integrity: sha512-x1KXOatwofR6ZAYzXRBL5wrdV0vwNxlTCK9NCuLqAzQYARqGcvFwiJA6A1ERuh+dgeA4Dxm3JBYictIes+SqUQ==}
 
-  '@astrojs/alpinejs@0.4.2':
-    resolution: {integrity: sha512-Aa4z2rAU9MaZfPF8vieBjyqghbcKkuWc5yy6FRr05e+AIc8C4VW5xUXwNlmlmLaRDkAa+Y1TyF8AyTtqVAkk1g==}
+  '@astrojs/alpinejs@0.4.3':
+    resolution: {integrity: sha512-Us4nqkjcn5FUK/0OcZPN9eRjT8IQVBJxPdZ5JlzScy1F6+twYThBy29lyM8rYwI2kNZFde+V6mSws2w4Vqv7uw==}
     peerDependencies:
       '@types/alpinejs': ^3.0.0
       alpinejs: ^3.0.0
@@ -2761,7 +2761,7 @@ snapshots:
       css-tree: 2.3.1
       is-potential-custom-element-name: 1.0.1
 
-  '@astrojs/alpinejs@0.4.2(@types/alpinejs@3.13.11)(alpinejs@3.14.8)':
+  '@astrojs/alpinejs@0.4.3(@types/alpinejs@3.13.11)(alpinejs@3.14.8)':
     dependencies:
       '@types/alpinejs': 3.13.11
       alpinejs: 3.14.8
