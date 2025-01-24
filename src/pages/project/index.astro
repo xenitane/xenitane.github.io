@@ -1,6 +1,7 @@
 ---
 import Project from "@/components/Project.astro";
 import BaseLayout, { type BaseLayoutProps } from "@/layouts/BaseLayout.astro";
+import cn from "@/lib/cn";
 import sortByLatest from "@/lib/sortByLatest";
 import { getCollection } from "astro:content";
 
@@ -14,12 +15,15 @@ const projects = (await getCollection("project")).sort(sortByLatest);
 ---
 
 <BaseLayout {...pageMetaData}>
-    <h1 id="title" class="flex items-center py-4 text-3xl font-bold">
-        <span> My Projects </span>
-    </h1>
+    <h1 id="title" class="flex items-center py-4 text-3xl font-bold">My Projects</h1>
     {
         0 === projects.length ? (
-            <div class="flex h-24 w-full items-center justify-center rounded-lg bg-gray-100/70 p-4 text-lg font-semibold italic dark:bg-gray-900/70">
+            <div
+                class={cn(
+                    "flex h-24 w-full items-center justify-center rounded-lg bg-neutral-100/70 p-4 text-lg font-semibold italic",
+                    "dark:bg-neutral-900/70"
+                )}
+            >
                 Working on stuff, will post here soon&hellip;
             </div>
         ) : (

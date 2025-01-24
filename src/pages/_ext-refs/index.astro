@@ -1,0 +1,57 @@
+---
+import BaseLayout, { type BaseLayoutProps } from "@/layouts/BaseLayout.astro";
+import cn from "@/lib/cn";
+
+const pageMetaData = {
+    title: "External References",
+    description: "All the interesting things that I'll come across",
+    keywords: ["portfolio", "xenitane", "articles", "blogs", "links", "references", "resources"],
+} satisfies BaseLayoutProps;
+const resourceURL = import.meta.env.RESOURCE_URL ?? "/ext-refs/list.json";
+---
+
+<BaseLayout {...pageMetaData}>
+    <h1 id="title" class="flex items-center py-4 text-3xl font-bold">External References</h1>
+    <blockquote
+        class={cn(
+            "border-l-[6px] border-neutral-200 p-3 leading-5 text-neutral-700",
+            "dark:border-neutral-800 dark:text-neutral-300"
+        )}
+    >
+        <p>This is where I'll link all the external resources that I'll come across.</p>
+    </blockquote>
+    <ul>
+        <template x-if="!$store.resources || !$store.resources?.list?.length">
+            <div
+                class={cn(
+                    "flex h-24 w-full items-center justify-center rounded-lg bg-neutral-100/70 p-4 text-lg font-semibold italic",
+                    "dark:bg-neutral-900/70"
+                )}
+            >
+                I am gathering stuff for now, please wait for some time&hellip;
+            </div>
+        </template>
+        <template x-if="$store.resources">
+            <template x-for="(resource,index) in $store.resources?.list ?? []">
+                <li :key="`resources-${index}`">
+                    <a x-text="resource.text" :href="resource.link"></a>
+                    <template x-if="undefined !== resource.summary">
+                        <div x-text="resource.summary"></div>
+                    </template>
+                </li>
+            </template>
+        </template>
+    </ul>
+</BaseLayout>
+
+<script define:vars={{ resourceURL }} is:inline>
+    document.addEventListener("alpine:init", async function () {
+        Alpine.store("resources", 0);
+        try {
+            // const data = await (await fetch(resourceURL)).json();
+            // Alpine.store("resources", data);
+        } catch (err) {
+            console.error(err);
+        }
+    });
+</script>

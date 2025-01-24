@@ -15,6 +15,7 @@ env:
     SITE_URL: ${{ vars.SITE_URL }}
     CDN_URL: ${{ vars.CDN_URL }}
     DOMAIN_NAME: ${{ vars.DOMAIN_NAME }}
+    RESOURCE_URL: ${{ vars.RESOURCE_URL }}
 
 jobs:
     build:
@@ -30,8 +31,9 @@ jobs:
               with:
                   node-version: 20
                   cache: "pnpm"
-            - run: pnpm install --frozen-lockfile
+            - run: pnpm install
             - run: pnpm build
+            - run: chmod a+x ./sitemap-injector.sh && ./sitemap-injector.sh
             - run: echo $DOMAIN_NAME > ./dist/CNAME
             - uses: peaceiris/actions-gh-pages@v4
               with:

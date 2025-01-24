@@ -1,34 +1,36 @@
 ---
 import { type CollectionEntry } from "astro:content";
-import minifySlug from "@/lib/minifySlug";
 import BaseLayout from "@/layouts/BaseLayout.astro";
 
 import formatDate from "@/lib/formatDate";
 import cdnify from "@/lib/cdnify";
-type Props = CollectionEntry<"publication">["data"] & { slug: CollectionEntry<"publication">["slug"] };
+type Props = CollectionEntry<"publication">["data"];
 
-const { metaContent, createdAt, slug: slugOrig } = Astro.props;
+const { metaContent, createdAt } = Astro.props;
 const { title, heroImage } = metaContent;
-const slug = minifySlug(slugOrig);
 
 import "@fontsource/geist-mono";
 import "@/styles/pub.css";
+import cn from "@/lib/cn";
 ---
 
 <BaseLayout {...metaContent} image={cdnify(heroImage)}>
     <a class="w-fit underline" href="/publication">&leftarrow;&numsp;All Blogs &amp; Articles</a>
-    <h1 class="flex items-center text-2xl font-bold md:text-3xl" transition:name={`PUT-${slug}`}>
+    <h1 class={cn("flex items-center text-2xl font-bold", "md:text-3xl")}>
         {title}
     </h1>
     <span class="min-w-fit text-nowrap">on {formatDate(createdAt)}</span>
     <div
-        class="mb-4 flex aspect-video items-center justify-center overflow-hidden rounded-2xl border border-gray-300 dark:border-gray-700 md:border-2"
+        class={cn(
+            "mb-4 flex aspect-video items-center justify-center overflow-hidden rounded-2xl border border-neutral-300",
+            "md:border-2",
+            "dark:border-neutral-700"
+        )}
     >
         <img
             src={cdnify(heroImage)}
             class="min-h-full min-w-full object-cover grayscale"
             alt={`${title} - Publication Hero Image`}
-            transition:name={`PUHI-${slug}`}
         />
     </div>
     <div id="publication-content">

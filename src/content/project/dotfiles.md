@@ -2,7 +2,7 @@
 metaContent: {
     title: ".Dotfiles",
     description: "Reproducible config for UNIX systems via dotfiles.",
-    heroImage: [true,"/project/dotfiles.png"],
+    heroImage: [true,"/index/project/dotfiles.png"],
     keywords: [".dotfiles", "config", "shell", "neovim", "zsh", "tmux", "gnu/linux", "unix"]
 }
 techStack: ["shell", "lua"]

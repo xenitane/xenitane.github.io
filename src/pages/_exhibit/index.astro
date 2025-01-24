@@ -1,0 +1,35 @@
+---
+import BaseLayout, { type BaseLayoutProps } from "@/layouts/BaseLayout.astro";
+
+import cn from "@/lib/cn";
+
+const pageMetadata = {
+    title: "Image Gallery",
+    description: "Xenitane's Image Gallery",
+    keywords: ["portfolio", "xenitane", "photography"],
+} satisfies BaseLayoutProps;
+
+const clicks: unknown[] = [];
+---
+
+<BaseLayout {...pageMetadata}>
+    <h1 id="title" class="flex items-center py-4 text-3xl font-bold">Exhibit</h1>
+    {
+        0 === clicks.length ? (
+            <div
+                class={cn(
+                    "flex h-24 w-full items-center justify-center rounded-lg bg-neutral-100/70 p-4 text-lg font-semibold italic",
+                    "dark:bg-neutral-900/70"
+                )}
+            >
+                Please wait for some time, you'll see the world through my eyes&hellip;
+            </div>
+        ) : (
+            <div class={cn("grid gap-4", "md:grid-cols-2")}>
+                {clicks.map(function () {
+                    return <div>data</div>;
+                })}
+            </div>
+        )
+    }
+</BaseLayout>

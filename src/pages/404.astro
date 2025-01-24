@@ -1,5 +1,6 @@
 ---
 import BaseLayout, { type BaseLayoutProps } from "@/layouts/BaseLayout.astro";
+import cn from "@/lib/cn";
 const pageMetaData = {
     title: "404 - Page Not Found",
     description: "404 page",
@@ -27,7 +28,7 @@ const pageMetaData = {
             <span>0</span>
             <span>4</span>
         </span>
-        <span class="font-light sm:text-xl">The Page You Are Looking For Does Not Exist.</span>
+        <span class={cn("font-light", "sm:text-xl")}>The Page You Are Looking For Does Not Exist.</span>
         <span class="text-lg font-medium underline"><a href="/">Go Home</a></span>
     </div>
 </BaseLayout>

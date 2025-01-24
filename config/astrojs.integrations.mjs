@@ -33,7 +33,7 @@ const rehypePrettyCodeOptions = {
 };
 
 function rehypeAddCopyButtonToCode() {
-    return function (tree) {
+    return function(tree) {
         async function copy(e) {
             e.preventDefault();
             const el = e.currentTarget;

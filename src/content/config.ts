@@ -29,13 +29,4 @@ const publication = defineCollection({
     }),
 });
 
-const click = defineCollection({
-    type: "data",
-    schema: z.object({
-        image: z.tuple([z.boolean(), z.string()]),
-        createdAt: z.coerce.date(),
-        shotLocation: z.string(),
-    }),
-});
-
-export const collections = { publication, project, click };
+export const collections = { publication, project };

@@ -3,7 +3,7 @@ isDraft: false
 metaContent: {
     title: "Errors as values: Why it's the better approach?",
     description: "Why we should return errors as values instead of throwing them around, hoping someone will catch them?",
-    heroImage: [true, "/publication/errors-as-values-the-better-approach.jpg"],
+    heroImage: [true, "/index/pub/errors-as-values-the-better-approach.jpg"],
     keywords: ["error handling","errors as values"]
 }
 createdAt: "20 Aug 2024"

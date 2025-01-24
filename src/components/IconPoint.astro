@@ -11,14 +11,6 @@ const { content, link } = Astro.props;
         <slot />
     </span>
     <h3 class="font-semibold">
-        {
-            undefined === link ? (
-                content
-            ) : (
-                <a transition:name={`${link.split("/")[1].slice(0, 2).toUpperCase()}T-${link.split("/")[2]}`} href={link}>
-                    {content}
-                </a>
-            )
-        }
+        {undefined === link ? content : <a href={link}>{content}</a>}
     </h3>
 </li>
