@@ -3,7 +3,7 @@ isDraft: false
 metaContent: {
     title: "Why I moved from medium to my own website",
     description: "My journey from medium to my own website for writing articles alongside my public portfolio and the reasons why I did so.",
-    heroImage: [true, "/publication/journey-from-medium-to-my-website.png"],
+    heroImage: [true, "/index/pub/journey-from-medium-to-my-website.png"],
     keywords: ["article writing", "website", "astro", "branding", "content", "publishing"]
 }
 createdAt: "05 Aug 2024"

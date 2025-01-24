@@ -1,41 +1,67 @@
 ---
 import cdnify from "@/lib/cdnify";
+import cn from "@/lib/cn";
 
 const links: [string, string][] = [
     ["/", "Home"],
     ["/about", "About"],
     ["/project", "Projects"],
-    ["/publication", "Blogs & Articles"],
-    ["/gallery", "Gallery"],
+    ["/pub", "Blogs & Articles"],
+    // ["/exhibit", "Exhibit"],
+    // ["/ext-refs", "External References"],
 ];
 ---
 
 <header
-    class="fixed top-0 z-10 flex h-16 w-full items-center bg-white px-4 text-black shadow-sm drop-shadow dark:bg-black dark:text-white dark:shadow-sm-dark dark:drop-shadow-dark md:h-[72px] md:p-5 lg:h-20 xl:px-6"
+    class={cn(
+        "fixed top-0 z-10 flex h-16 w-full items-center bg-white px-4 text-black shadow-sm drop-shadow",
+        "md:h-[72px] md:p-5",
+        "lg:h-20",
+        "xl:px-6",
+        "dark:bg-black dark:text-white dark:shadow-sm-dark dark:drop-shadow-dark"
+    )}
 >
     <div class="flex w-full items-center gap-4">
         <a class="flex gap-2" href="/">
-            <img src={cdnify([true, "/logo.png"])} class="aspect-square h-9" alt="logo" />
+            <img src={cdnify([true, "/index/logo.png"])} class="aspect-square h-9" alt="logo" />
             <span class="text-3xl font-medium tracking-tighter">Xenitane&trade;</span>
         </a>
         <input type="checkbox" id="__is_nav_sidebar_open" class="hidden" />
         <label for="__is_nav_sidebar_open" id="overlay" class="absolute inset-0 z-[15] hidden h-dvh w-dvw bg-transparent"
         ></label>
         <nav
-            class="absolute inset-y-0 -right-full z-20 h-dvh w-3/4 bg-white py-4 pl-4 transition-[right] duration-300 ease-in-out dark:bg-black md:static md:ml-auto md:h-auto md:w-auto md:p-0"
+            class={cn(
+                "absolute inset-y-0 -right-full z-20 h-dvh w-3/4 bg-white py-4 pl-4 transition-[right] duration-300 ease-in-out",
+                "md:static md:ml-auto md:h-auto md:w-auto md:p-0",
+                "dark:bg-black"
+            )}
         >
-            <label for="__is_nav_sidebar_open" class="my-4 block aspect-square w-[19px] hover:cursor-pointer md:hidden">
-                <div class="mb-px h-[3px] w-[27px] translate-y-0.5 rotate-45 rounded-full bg-black opacity-80 dark:bg-white">
+            <label
+                for="__is_nav_sidebar_open"
+                class={cn("my-4 block aspect-square w-[19px]", "hover:cursor-pointer", "md:hidden")}
+            >
+                <div
+                    class={cn(
+                        "mb-px h-[3px] w-[27px] translate-y-0.5 rotate-45 rounded-full bg-black opacity-80",
+                        "dark:bg-white"
+                    )}
+                >
                 </div>
-                <div class="h-[3px] w-[27px] -translate-y-0.5 -rotate-45 rounded-full bg-black opacity-80 dark:bg-white"></div>
+                <div
+                    class={cn("h-[3px] w-[27px] -translate-y-0.5 -rotate-45 rounded-full bg-black opacity-80", "dark:bg-white")}
+                >
+                </div>
             </label>
-            <ul class="flex flex-col items-baseline gap-4 md:flex-row md:items-center md:gap-6 md:space-y-0">
+            <ul class={cn("flex flex-col items-baseline gap-4", "md:flex-row md:items-center md:gap-6 md:space-y-0")}>
                 {
                     links.map(function ([link, text]) {
                         return (
                             <li>
                                 <a
-                                    class="font-medium transition-none duration-300 hover:text-[rgb(132_139_152)] hover:transition-colors"
+                                    class={cn(
+                                        "font-medium transition-none duration-300",
+                                        "hover:text-[#8d8d8d] hover:transition-colors"
+                                    )}
                                     href={link}
                                 >
                                     {text}
@@ -47,13 +73,17 @@ const links: [string, string][] = [
             </ul>
         </nav>
         <button
-            class="xen-bg-primary ml-auto flex h-9 w-9 items-center justify-center rounded focus-within:ring-offset-0 focus-visible:outline-none focus-visible:ring-0 md:ml-0"
+            class={cn(
+                "ml-auto flex h-9 w-9 items-center justify-center rounded",
+                "md:ml-0",
+                "focus-within:ring-offset-0 focus-visible:outline-none focus-visible:ring-0"
+            )}
             @click="__theme__toggle__()"
             aria-label="theme-switch-button"
         >
             <span class="sr-only">theme switch button</span>
             <svg
-                class="absolute h-6 w-6 scale-100 transition-all duration-300 ease-in-out dark:scale-0"
+                class={cn("absolute h-6 w-6 scale-100 transition-all duration-300 ease-in-out", "dark:scale-0")}
                 viewBox="0 0 24 24"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
@@ -70,7 +100,7 @@ const links: [string, string][] = [
                     fill="currentColor"></path>
             </svg>
             <svg
-                class="absolute h-6 w-6 scale-0 transition-all duration-300 ease-in-out dark:scale-100"
+                class={cn("absolute h-6 w-6 scale-0 transition-all duration-300 ease-in-out", "dark:scale-100")}
                 viewBox="0 0 24 24"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
@@ -81,10 +111,10 @@ const links: [string, string][] = [
                     fill="currentColor"></path></svg
             >
         </button>
-        <label for="__is_nav_sidebar_open" class="block hover:cursor-pointer md:hidden">
-            <div class="h-[3px] w-[27px] rounded-full bg-black opacity-80 dark:bg-white"></div>
-            <div class="my-[5px] h-[3px] w-[27px] rounded-full bg-black opacity-80 dark:bg-white"></div>
-            <div class="h-[3px] w-[27px] rounded-full bg-black opacity-80 dark:bg-white"></div>
+        <label for="__is_nav_sidebar_open" class={cn("block", "hover:cursor-pointer", "md:hidden")}>
+            <div class={cn("h-[3px] w-[27px] rounded-full bg-black opacity-80", "dark:bg-white")}></div>
+            <div class={cn("my-[5px] h-[3px] w-[27px] rounded-full bg-black opacity-80", "dark:bg-white")}></div>
+            <div class={cn("h-[3px] w-[27px] rounded-full bg-black opacity-80", "dark:bg-white")}></div>
         </label>
     </div>
 </header>

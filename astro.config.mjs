@@ -1,6 +1,6 @@
 /** @type {import("astro/config").AstroUserConfig} */
 
-import { defineConfig } from "astro/config";
+import { defineConfig, envField } from "astro/config";
 import { integrations, markdownConfig as markdown } from "./config/astrojs.integrations.mjs";
 
 // https://astro.build/config
@@ -18,4 +18,12 @@ export default defineConfig({
             port: 4173 + ("dev" === command ? 1000 : 0),
         };
     },
+    env: {
+        schema: {
+            SITE_URL: envField.string({ context: "client", access: "public", optional: false, url: true }),
+            CDN_URL: envField.string({ context: "client", access: "public", optional: false, url: true }),
+            DOMAIN_NAME: envField.string({ context: "client", access: "public", optional: false }),
+            RESOURCE_URL: envField.string({ context: "client", access: "public", optional: false })
+        }
+    }
 });

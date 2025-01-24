@@ -2,7 +2,7 @@
 metaContent: {
     title: "Nonogram Solver",
     description: "A program to solve nonogram puzzles.",
-    heroImage: [true,"/project/nonogram-solver.png"],
+    heroImage: [true,"/index/project/nonogram-solver.png"],
     keywords: ["puzzles", "nonogram"]
 }
 techStack: ["zig"]

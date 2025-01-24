@@ -21,6 +21,6 @@ const publication = Astro.props;
 const { Content } = await publication.render();
 ---
 
-<PublicationLayout {...publication.data} slug={publication.slug}>
+<PublicationLayout {...publication.data}>
     <Content />
 </PublicationLayout>

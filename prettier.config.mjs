@@ -8,9 +8,9 @@ export default {
     semi: true,
     singleQuote: false,
     bracketSpacing: true,
-    plugins: ["prettier-plugin-astro", "prettier-plugin-organize-imports", "prettier-plugin-tailwindcss"],
     tailwindConfig: "./tailwind.config.mjs",
-    tailwindAttributes: ["class", "class:list"],
+    tailwindAttributes: ["class", "class:list", ":class", "x-bind:class"],
+    plugins: ["prettier-plugin-astro", "prettier-plugin-organize-imports", "prettier-plugin-tailwindcss"],
     overrides: [
         {
             files: ".astro",

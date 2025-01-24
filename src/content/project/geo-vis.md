@@ -2,7 +2,7 @@
 metaContent: {
     title: "Geometric Visualizer",
     description: "A simple application to visualize fractal/chaotic geometry.",
-    heroImage: [true, "/project/geo-vis.png"],
+    heroImage: [true, "/index/project/geo-vis.png"],
     keywords: ["geometry", "fractals", "attractors", "recursion"]
 }
 techStack: ["react", "tailwindcss"]

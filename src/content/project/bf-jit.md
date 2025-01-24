@@ -3,7 +3,7 @@ metaContent: {
     title: "BrainF\u2022ck Compiler",
     description: "A compiler/interpreter for brainf\u2022ck with jitting.",
     keywords: ["compiler", "interpreter"],
-    heroImage: [true,"/project/bf-jit.png"]
+    heroImage: [true,"/index/project/bf-jit.png"]
 }
 techStack: ["C", "x86_ASM"]
 version: "1.0"
