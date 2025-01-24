@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@fontsource/geist-mono':
-        specifier: ^5.1.0
-        version: 5.1.0
+        specifier: ^5.1.1
+        version: 5.1.1
       '@fontsource/geist-sans':
         specifier: ^5.1.0
         version: 5.1.0
@@ -341,8 +341,8 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@fontsource/geist-mono@5.1.0':
-    resolution: {integrity: sha512-MDFgmKUdDbV357vD2bOZAro597Nd2md01GAdr3GSZteCJQdPT/UhHUBCAxl9KUiH03aMPFM9Rx7x8/EtrJmpKg==}
+  '@fontsource/geist-mono@5.1.1':
+    resolution: {integrity: sha512-Rr/VXX3qyRsLgEFwFUqhDS7PORzQUBDLoQc8bONbBz+hZ+SD8U0nEzHqRFBzT3zFcsf/0bMyCQPZUktKwPt3GQ==}
 
   '@fontsource/geist-sans@5.1.0':
     resolution: {integrity: sha512-4AI/UxIcZiYgK6/cTo4R9oM4VHHLcFdHVv7m2+M42VyY16hhKJADrGe4HPjTxvolmce2IZX/jc6sFJ+GkLB64w==}
@@ -3004,7 +3004,7 @@ snapshots:
   '@esbuild/win32-x64@0.24.2':
     optional: true
 
-  '@fontsource/geist-mono@5.1.0': {}
+  '@fontsource/geist-mono@5.1.1': {}
 
   '@fontsource/geist-sans@5.1.0': {}
 
