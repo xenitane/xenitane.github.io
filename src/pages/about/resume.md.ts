@@ -1,7 +1,7 @@
 import { type MarkdownInstance } from "astro";
 
 const resumeMd = (
-    (await import.meta.glob("@/data/about.md")["/src/data/about.md"]()) as MarkdownInstance<Record<string, any>>
+    Object.values(import.meta.glob("@/data/about.md", { eager: true }))[0] as MarkdownInstance<Record<string, any>>
 ).rawContent();
 
 export function GET() {
