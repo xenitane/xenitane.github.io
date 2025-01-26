@@ -2,6 +2,8 @@
 
 import { defineConfig, envField } from "astro/config";
 import { integrations, markdownConfig as markdown } from "./config/astrojs.integrations.mjs";
+import tailwindcss from "@tailwindcss/vite";
+
 
 // https://astro.build/config
 export default defineConfig({
@@ -25,5 +27,8 @@ export default defineConfig({
             DOMAIN_NAME: envField.string({ context: "client", access: "public", optional: false }),
             RESOURCE_URL: envField.string({ context: "client", access: "public", optional: false })
         }
+    },
+    vite: {
+        plugins: [tailwindcss()]
     }
 });

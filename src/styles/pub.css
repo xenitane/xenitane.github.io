@@ -1,3 +1,6 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
 #project-content,
 #publication-content {
     @apply flex flex-col gap-2;
@@ -42,8 +45,7 @@
         @apply list-disc space-y-1 pl-6;
     }
     table {
-        @apply block overflow-x-auto whitespace-nowrap border-x;
-        @apply scrollbar-thin scrollbar-thumb-neutral-500 scrollbar-thumb-rounded;
+        @apply block overflow-x-auto border-x whitespace-nowrap;
         > * {
             @apply w-full border-t;
             > * > {
@@ -80,7 +82,7 @@
         }
 
         [data-copy] {
-            @apply absolute right-4 top-4 rounded-md border border-neutral-500 bg-white p-2 text-sm text-neutral-900 transition-all hover:bg-neutral-400 disabled:pointer-events-none disabled:bg-neutral-400;
+            @apply absolute top-4 right-4 rounded-md border border-neutral-500 bg-white p-2 text-sm text-neutral-900 transition-all hover:bg-neutral-400 disabled:pointer-events-none disabled:bg-neutral-400;
         }
 
         pre {
@@ -98,7 +100,6 @@
                 "Helvetica Neue",
                 sans-serif;
             @apply mx-auto overflow-auto rounded-md p-4;
-            @apply scrollbar-thin scrollbar-thumb-neutral-500 scrollbar-thumb-rounded;
 
             [data-line] {
                 @apply -mx-4 px-6;

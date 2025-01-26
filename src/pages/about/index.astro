@@ -35,6 +35,8 @@ const Content = (
 </BaseLayout>
 
 <style is:global>
+    @import "tailwindcss";
+    @custom-variant dark (&:where(.dark, .dark *));
     #about-content {
         h1 {
             @apply text-2xl font-bold tracking-tighter;

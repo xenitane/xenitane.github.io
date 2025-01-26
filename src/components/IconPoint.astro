@@ -1,9 +1,9 @@
 ---
 type Props = {
-    content: string;
+    text: string;
     link?: string;
 };
-const { content, link } = Astro.props;
+const { text, link } = Astro.props;
 ---
 
 <li class="flex items-center gap-4">
@@ -11,6 +11,6 @@ const { content, link } = Astro.props;
         <slot />
     </span>
     <h3 class="font-semibold">
-        {undefined === link ? content : <a href={link}>{content}</a>}
+        {undefined === link ? text : <a href={link}>{text}</a>}
     </h3>
 </li>

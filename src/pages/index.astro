@@ -31,42 +31,40 @@ const plans: string[] = [
     "Make a Programming Language",
 ];
 
-const projects = (await getCollection("project")).sort(sortByLatest).slice(0, MAX_SECTION_LENGTH);
+let [projects, publications] = await Promise.all([
+    getCollection("project"),
+    getCollection("publication", (p) => import.meta.env.DEV || !p.data.isDraft),
+]);
 
-const publications = (
-    await getCollection("publication", function (publication) {
-        return import.meta.env.DEV || !publication.data.isDraft;
-    })
-)
-    .sort(sortByLatest)
-    .slice(0, MAX_SECTION_LENGTH);
+projects = projects.sort(sortByLatest).slice(0, MAX_SECTION_LENGTH);
+publications = publications.sort(sortByLatest).slice(0, MAX_SECTION_LENGTH);
 
 const blocks: {
     meta: SectionProps;
-    content: { content: string; link?: string }[];
+    content: { text: string; link?: string }[];
     emptyText: string;
     Icon: (arg: Record<string, unknown>) => unknown;
 }[] = [
     {
         meta: { sectionId: "plans", sectionName: "What I'm up-to these days & What I plan to do" },
-        emptyText: "Looking for things to do, will update later…",
-        content: plans.map((plan) => ({ content: plan })),
+        emptyText: "Looking for things to do, will update later&hellip;",
+        content: plans.map((plan) => ({ text: plan })),
         Icon: PlanIcon,
     },
     {
         meta: { sectionId: "projects", sectionName: "My Recent Projects", link: "/project" },
-        emptyText: "Working on stuff, will post here soon…",
+        emptyText: "Working on stuff, will post here soon&hellip;",
         content: projects.map((project) => ({
-            content: project.data.metaContent.title,
+            text: project.data.metaContent.title,
             link: `/project/${minifySlug(project.slug)}`,
         })),
         Icon: ProjectIcon,
     },
     {
         meta: { sectionId: "publications", sectionName: "Recent Blogs & Articles", link: "/pub" },
-        emptyText: "Scribbling and Drafting some ideas, Keep your eyes open…",
+        emptyText: "Scribbling and Drafting some ideas, Keep your eyes open&hellip;",
         content: publications.map((publication) => ({
-            content: publication.data.metaContent.title,
+            text: publication.data.metaContent.title,
             link: `/pub/${minifySlug(publication.slug)}`,
         })),
         Icon: PublicationIcon,
@@ -87,7 +85,7 @@ const blocks: {
     <div class="mx-auto flex flex-col gap-4 p-4">
         <div class={cn("flex w-full flex-col-reverse gap-4 lg:flex-row", "lg:items-center")}>
             <div class="flex flex-col gap-2">
-                <h2 id="intro" class="text-2xl font-bold italic tracking-tight">Welcome to my Digital Oasis.</h2>
+                <h2 id="intro" class="text-2xl font-bold tracking-tight italic">Welcome to my Digital Oasis.</h2>
                 <p class={cn("leading-5 text-neutral-800", "dark:text-neutral-200")}>
                     This is where I showcase what I've made and what I'm up-to.
                 </p>
@@ -105,7 +103,7 @@ const blocks: {
             </div>
         </div>
         <div class="flex flex-col gap-2">
-            <h2 id="about" class="text-2xl font-bold italic tracking-tight">About Me</h2>
+            <h2 id="about" class="text-2xl font-bold tracking-tight italic">About Me</h2>
             <blockquote
                 class={cn(
                     "border-l-[6px] border-neutral-200 p-3 leading-5 text-neutral-700",
@@ -141,9 +139,8 @@ const blocks: {
                                 "flex w-full items-center justify-center rounded-lg bg-neutral-100/70 p-4 font-semibold italic",
                                 "dark:bg-neutral-900/70"
                             )}
-                        >
-                            {block.emptyText}
-                        </div>
+                            set:html={block.emptyText}
+                        />
                     ) : (
                         <div class={cn("flex w-full rounded-lg bg-neutral-100/70", "dark:bg-neutral-900/70")}>
                             <ul class={cn("grid w-full gap-2 space-y-2 p-4", "md:grid-cols-2")}>

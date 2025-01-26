@@ -1,7 +1,6 @@
 import alpinejs from "@astrojs/alpinejs";
 import mdx from "@astrojs/mdx";
 import sitemap from "@astrojs/sitemap";
-import tailwind from "@astrojs/tailwind";
 
 import { visit } from "unist-util-visit";
 
@@ -33,7 +32,7 @@ const rehypePrettyCodeOptions = {
 };
 
 function rehypeAddCopyButtonToCode() {
-    return function(tree) {
+    return function (tree) {
         async function copy(e) {
             e.preventDefault();
             const el = e.currentTarget;
@@ -85,7 +84,6 @@ const markdownConfig = {
 
 const integrations = [
     alpinejs({ entrypoint: "/src/entrypoint.ts" }),
-    tailwind({ nesting: true }),
     sitemap(),
     mdx(markdownConfig),
 ];
