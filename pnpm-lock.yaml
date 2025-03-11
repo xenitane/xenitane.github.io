@@ -18,8 +18,8 @@ importers:
         specifier: ^3.14.8
         version: 3.14.8
       tailwindcss:
-        specifier: ^4.0.0
-        version: 4.0.0
+        specifier: ^4.0.13
+        version: 4.0.13
     devDependencies:
       '@astrojs/alpinejs':
         specifier: ^0.4.3
@@ -2089,6 +2089,9 @@ packages:
 
   tailwindcss@4.0.0:
     resolution: {integrity: sha512-ULRPI3A+e39T7pSaf1xoi58AqqJxVCLg8F/uM5A3FadUbnyDTgltVnXJvdkTjwCOGA6NazqHVcwPJC5h2vRYVQ==}
+
+  tailwindcss@4.0.13:
+    resolution: {integrity: sha512-gbvFrB0fOsTv/OugXWi2PtflJ4S6/ctu6Mmn3bCftmLY/6xRsQVEJPgIIpABwpZ52DpONkCA3bEj5b54MHxF2Q==}
 
   tapable@2.2.1:
     resolution: {integrity: sha512-GNzQvQTOIP6RyTfE2Qxb8ZVlNmw0n88vp1szwWRimP02mnTsx3Wtn5qRdqY9w2XduFNUgvOwhNnQsjwCp+kqaQ==}
@@ -5046,6 +5049,8 @@ snapshots:
   tailwind-merge@2.6.0: {}
 
   tailwindcss@4.0.0: {}
+
+  tailwindcss@4.0.13: {}
 
   tapable@2.2.1: {}
 
