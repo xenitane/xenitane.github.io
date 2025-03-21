@@ -53,7 +53,7 @@
         "@astrojs/check": "^0.9.4",
         "@astrojs/mdx": "^4.0.7",
         "@astrojs/sitemap": "^3.2.1",
-        "@tailwindcss/vite": "^4.0.0",
+        "@tailwindcss/vite": "^4.0.15",
         "@types/alpinejs": "^3.13.11",
         "astro": "^5.1.8",
         "clsx": "^2.1.1",
