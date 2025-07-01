@@ -1,11 +1,12 @@
 ---
-isDraft: false 
-metaContent: {
-    title: "Errors as values: Why it's the better approach?",
-    description: "Why we should return errors as values instead of throwing them around, hoping someone will catch them?",
-    heroImage: [true, "/index/pub/errors-as-values-the-better-approach.jpg"],
-    keywords: ["error handling","errors as values"]
-}
+isDraft: false
+metaContent:
+    {
+        title: "Errors as values: Why it's the better approach?",
+        description: "Why we should return errors as values instead of throwing them around, hoping someone will catch them?",
+        heroImage: [true, "/index/pub/errors-as-values-the-better-approach.jpg"],
+        keywords: ["error handling", "errors as values"],
+    }
 createdAt: "20 Aug 2024"
 ---
 
@@ -78,7 +79,6 @@ Henceforth, I implore you to please take a look at these languages and try them 
 ## Examples
 
 ```rust showLineNumbers=true title="Rust"
-
 enum NumberError{
     NumberTooLarge
 }

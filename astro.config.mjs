@@ -1,4 +1,4 @@
-/** @type {import("astro/config").AstroUserConfig} */
+/** @type {import("astro").AstroUserConfig} */
 
 import { defineConfig, envField } from "astro/config";
 import { integrations, markdownConfig as markdown } from "./config/astrojs.integrations.mjs";

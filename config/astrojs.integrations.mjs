@@ -17,18 +17,21 @@ const rehypeMathjaxOptions = {
 
 /** @type {import("rehype-pretty-code").Options} */
 const rehypePrettyCodeOptions = {
-    theme: "catppuccin-mocha",
-    onVisitHighlightedLine(node) {
-        node?.properties?.className?.push("highlighted");
+    theme: {
+        light: "catppuccin-latte",
+        dark: "catppuccin-mocha",
     },
-    onVisitHighlightedChars(node) {
-        if (node) {
-            if (node.properties) {
-                node.properties.className = node.properties.className ?? [];
-                node.properties.className.push("hilighted-chars");
-            }
-        }
-    },
+    // onVisitHighlightedLine(node) {
+    //     node?.properties?.className?.push("highlighted");
+    // },
+    // onVisitHighlightedChars(node) {
+    //     if (node) {
+    //         if (node.properties) {
+    //             node.properties.className = node.properties.className ?? [];
+    //             node.properties.className.push("hilighted-chars");
+    //         }
+    //     }
+    // },
 };
 
 function rehypeAddCopyButtonToCode() {
@@ -39,12 +42,12 @@ function rehypeAddCopyButtonToCode() {
             const value = el.previousElementSibling.innerText;
             const originalText = el.innerText;
             el.disabled = true;
-            await navigator.clipboard.writeText(value);
-            el.innerText = "copied!";
             setTimeout(() => {
                 el.innerText = originalText;
                 el.disabled = false;
             }, 3000);
+            await navigator.clipboard.writeText(value);
+            el.innerText = "copied!";
         }
 
         function visitor(node) {
@@ -70,7 +73,7 @@ function rehypeAddCopyButtonToCode() {
     };
 }
 
-/** @type {import("astro/config").AstroUserConfig["markdown"]} */
+/** @type {import("astro").AstroUserConfig["markdown"]} */
 const markdownConfig = {
     remarkPlugins: [remarkMath],
     rehypePlugins: [
@@ -79,12 +82,7 @@ const markdownConfig = {
         rehypeAddCopyButtonToCode,
     ],
     syntaxHighlight: false,
-    shikiConfig: { theme: "catppuccin-mocha" },
 };
 
-const integrations = [
-    alpinejs({ entrypoint: "/src/entrypoint.ts" }),
-    sitemap(),
-    mdx(markdownConfig),
-];
+const integrations = [alpinejs({ entrypoint: "/src/entrypoint.ts" }), sitemap(), mdx(markdownConfig)];
 export { integrations, markdownConfig };

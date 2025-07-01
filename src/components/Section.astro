@@ -9,7 +9,7 @@ const { sectionId, sectionName, link } = Astro.props;
 ---
 
 <section class="flex flex-col gap-4 p-4">
-    <h2 id={sectionId} class="text-2xl font-bold italic tracking-tight">
+    <h2 id={sectionId} class="text-2xl font-bold tracking-tight italic">
         {
             undefined !== link ? (
                 <a href={link} class="inline-flex cursor-pointer items-center gap-3">
