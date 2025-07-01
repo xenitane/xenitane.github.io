@@ -43,29 +43,29 @@
         "reset": "rm -rf ./dist"
     },
     "dependencies": {
-        "@fontsource/geist-mono": "^5.1.1",
-        "@fontsource/geist-sans": "^5.1.0",
-        "alpinejs": "^3.14.8",
-        "tailwindcss": "^4.0.0"
+        "@fontsource/geist-mono": "^5.2.6",
+        "@fontsource/geist-sans": "^5.2.5",
+        "alpinejs": "^3.14.9",
+        "tailwindcss": "^4.1.11"
     },
     "devDependencies": {
-        "@astrojs/alpinejs": "^0.4.3",
+        "@astrojs/alpinejs": "^0.4.8",
         "@astrojs/check": "^0.9.4",
-        "@astrojs/mdx": "^4.0.7",
-        "@astrojs/sitemap": "^3.2.1",
-        "@tailwindcss/vite": "^4.0.0",
+        "@astrojs/mdx": "^4.3.0",
+        "@astrojs/sitemap": "^3.4.1",
+        "@tailwindcss/vite": "^4.1.11",
         "@types/alpinejs": "^3.13.11",
-        "astro": "^5.1.8",
+        "astro": "^5.10.2",
         "clsx": "^2.1.1",
-        "prettier": "^3.4.2",
+        "prettier": "^3.6.2",
         "prettier-plugin-astro": "^0.14.1",
         "prettier-plugin-organize-imports": "^4.1.0",
-        "prettier-plugin-tailwindcss": "^0.6.11",
-        "rehype-mathjax": "^6.0.0",
-        "rehype-pretty-code": "^0.14.0",
+        "prettier-plugin-tailwindcss": "^0.6.13",
+        "rehype-mathjax": "^7.1.0",
+        "rehype-pretty-code": "^0.14.1",
         "remark-math": "^6.0.0",
-        "tailwind-merge": "^2.6.0",
-        "typescript": "^5.7.3",
+        "tailwind-merge": "^3.3.1",
+        "typescript": "^5.8.3",
         "unist-util-visit": "^5.0.0"
     }
 }
