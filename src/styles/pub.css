@@ -1,6 +1,13 @@
 @import "tailwindcss";
 @custom-variant dark (&:where(.dark, .dark *));
 
+html pre span {
+    color: var(--shiki-light);
+}
+html.dark pre span {
+    color: var(--shiki-dark);
+}
+
 #project-content,
 #publication-content {
     @apply flex flex-col gap-2;
@@ -69,8 +76,8 @@
         @apply relative;
 
         [data-rehype-pretty-code-title] {
-            @apply mt-0 inline-flex h-12 items-center rounded-tl-md rounded-tr-md;
-            @apply border-t-2 border-indigo-500 bg-[#1e1e2e] px-4 text-sm text-[#cdd6f4];
+            @apply mt-0 flex h-12 items-center rounded-tl-md rounded-tr-md;
+            @apply bg-[#ccd0da] px-4 text-sm text-[#4c4f69] dark:bg-[#313244] dark:text-[#cdd6f4];
         }
 
         [data-rehype-pretty-code-title] + pre {
@@ -99,7 +106,7 @@
                 "Open Sans",
                 "Helvetica Neue",
                 sans-serif;
-            @apply mx-auto overflow-auto rounded-md p-4;
+            @apply mx-auto overflow-auto rounded-md bg-[#eff1f5] p-4 dark:bg-[#1e1e2e];
 
             [data-line] {
                 @apply -mx-4 px-6;

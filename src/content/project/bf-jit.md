@@ -1,10 +1,11 @@
 ---
-metaContent: {
-    title: "BrainF\u2022ck Compiler",
-    description: "A compiler/interpreter for brainf\u2022ck with jitting.",
-    keywords: ["compiler", "interpreter"],
-    heroImage: [true,"/index/project/bf-jit.png"]
-}
+metaContent:
+    {
+        title: "BrainFuck Compiler",
+        description: "A compiler/interpreter for brainfuck with jitting.",
+        keywords: ["compiler", "interpreter"],
+        heroImage: [true, "/index/project/bf-jit.png"],
+    }
 techStack: ["C", "x86_ASM"]
 version: "1.0"
 createdAt: "31 Jan 2024"

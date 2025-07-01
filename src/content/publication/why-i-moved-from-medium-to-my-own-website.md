@@ -1,11 +1,12 @@
 ---
 isDraft: false
-metaContent: {
-    title: "Why I moved from medium to my own website",
-    description: "My journey from medium to my own website for writing articles alongside my public portfolio and the reasons why I did so.",
-    heroImage: [true, "/index/pub/journey-from-medium-to-my-website.png"],
-    keywords: ["article writing", "website", "astro", "branding", "content", "publishing"]
-}
+metaContent:
+    {
+        title: "Why I moved from medium to my own website",
+        description: "My journey from medium to my own website for writing articles alongside my public portfolio and the reasons why I did so.",
+        heroImage: [true, "/index/pub/journey-from-medium-to-my-website.png"],
+        keywords: ["article writing", "website", "astro", "branding", "content", "publishing"],
+    }
 createdAt: "05 Aug 2024"
 ---
 
@@ -19,7 +20,7 @@ And as everyone, I started writing on medium in December 2023. The first article
 
 Even writing that article was a pain as i wanted to write math formula but&hellip; you guessed it, _Medium_ has no support for `TeX`.
 
-I somehow pulled it off using  pre-rerendered images of the `TeX` expressions.
+I somehow pulled it off using pre-rerendered images of the `TeX` expressions.
 
 But that's the extent of medium, text blocks, images/videos, embeds, code blocks. You can't customize them and add interactive segments.
 
@@ -42,7 +43,7 @@ But I wanted something that'll just produce plain HTML with minimal to no JS to 
 
 ## I Asked For A Ship And Got A Rocket-Ship
 
-Recently I tried **[Astro](https://astro.build)**, cause why not. It was also on my back-burner. 
+Recently I tried **[Astro](https://astro.build)**, cause why not. It was also on my back-burner.
 
 Astro is a meta-framework in the javascript ecosystem. It has a defined structure for everything, components, content, layouts, routing etc, and it generates plain HTML as the build output.
 
