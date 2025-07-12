@@ -145,7 +145,7 @@ const blocks: {
                         />
                     ) : (
                         <div class={cn("flex w-full rounded-lg bg-neutral-100/70", "dark:bg-neutral-900/70")}>
-                            <ul class={cn("grid w-full gap-2 space-y-2 p-4", "md:grid-cols-2")}>
+                            <ul class={cn("grid w-full gap-2 space-y-2 space-x-2 p-4", "md:grid-cols-2")}>
                                 {block.content.map((content) => {
                                     return (
                                         <IconPoint {...content}>
