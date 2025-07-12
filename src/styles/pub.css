@@ -81,7 +81,7 @@ html.dark pre span {
         }
 
         [data-rehype-pretty-code-title] + pre {
-            @apply rounded-tl-none;
+            @apply rounded-tl-none rounded-tr-none;
         }
 
         [data-rehype-pretty-code-title] ~ [data-copy] {
