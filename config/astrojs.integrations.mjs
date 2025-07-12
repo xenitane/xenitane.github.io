@@ -21,17 +21,6 @@ const rehypePrettyCodeOptions = {
         light: "catppuccin-latte",
         dark: "catppuccin-mocha",
     },
-    // onVisitHighlightedLine(node) {
-    //     node?.properties?.className?.push("highlighted");
-    // },
-    // onVisitHighlightedChars(node) {
-    //     if (node) {
-    //         if (node.properties) {
-    //             node.properties.className = node.properties.className ?? [];
-    //             node.properties.className.push("hilighted-chars");
-    //         }
-    //     }
-    // },
 };
 
 function rehypeAddCopyButtonToCode() {

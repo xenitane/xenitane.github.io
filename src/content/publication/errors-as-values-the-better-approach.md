@@ -44,10 +44,9 @@ In the above case we don't know for sure which function call is responsible for 
 
 The issues:
 
-- if uncaught, huge stack-dumps
-- cleanup is a nightmare
-- hard to find source in large try blocks
+- extra biolerplate code
 - the control-flow gets highjacked
+- hard to track the origin of error in large codebases
 
 Now don't get me wrong, if done properly, we can avoid a few of the issues I mentioned above.
 
@@ -61,18 +60,18 @@ Seems complex! Yeah i know. But hear me out, what if we made doing this simpler?
 
 Well, there we have it, some modern programming language creators identified this and designed programming languages where error are treated and passed around just like values.
 
-Some examples of this kind of languages are [**`Rust`**](https://www.rust-lang.org/), [**`Zig`**](https://ziglang.org/), [**`Go`**](https://go.dev/), [**`Odin`**](https://odin-lang.org/) and some others that I'm not aware of at the time of writing. Here's How they do it:
+Some examples of this kind of languages are `Rust`, `Zig`, `Go`, `Odin` and some others that I'm not aware of at the time of writing. Here's How they do it:
 
-- Rust: It has two special types, `Result` type which the programmer can use to return either the result or the error, and this forces you to manage the errors as you receive them.
-- Zig: You have to mark a function that will return an error and any function that will receive an error if it wants to return it too, otherwise process the error then and there.
-- Go: In Go you can return tuples aka multiple values at once. So if you are concerned that something can go wrong(and believe me it will), you can include and error among your return values which the receiver is forced to process.
-- Odin: Odin follows an approach that's a mix of all three above in my opinion.
+- Rust: It has a special `Result` type which the programmer can use to return either the result or the error, and this forces you to manage the errors as you receive them.
+- Zig: You have error unions as your return type for functions which enforce you to either handle them on the call site or simply propogate them upward.
+- Go: In Go you can return tuples aka multiple values at once. So if you are concerned that something can go wrong(and believe me it will), you can include and error at the end of a tuple in the return values which the receiver will deal with.
+- Odin: I have not used Odin yet, so I won't say much but it also does follow a similar approach.
 
 How does all this benefit us:
 
-- We are forced to handle each and every error, that means we can track the point of it's origin without huge stacktraces by appropriate reporting.
-- An error occurred, we captured it, now we can handle the cleanup before returning it if we don't want to handle it then and there.
-- The control flow is safe, we are not jumping around with no idea where we'll land.
+- We are forced to handle each and every error, that means we can track the point of it's origin in the explicitness.
+- An error occurred, we captured it, now we can do some work as part of processing the error also based on it's type.
+- The control flow is safe, and predictable, we are not jumping around with no idea where we'll land.
 
 Henceforth, I implore you to please take a look at these languages and try them out, you might end up liking them and using them.
 
@@ -181,6 +180,6 @@ You can implement this things in a language yourself if you are up-to the task a
 
 ## Parting Words
 
-I hope you learnt something interesting here, which you might find useful and be able to use later in your journey as a developer, engineer.
+I hope you've learnt something interesting here, which you might find useful and be able to use later in your journey as a developer, engineer.
 
 Till then, I'll be floating around.

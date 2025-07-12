@@ -5,7 +5,7 @@ import IconPoint from "@/components/IconPoint.astro";
 
 import { getCollection } from "astro:content";
 import sortByLatest from "@/lib/sortByLatest";
-import minifySlug from "@/lib/minifySlug";
+import hashSlug from "@/lib/hashSlug";
 import cdnify from "@/lib/cdnify";
 
 import { MAX_SECTION_LENGTH } from "@/constants";
@@ -58,7 +58,7 @@ const blocks: {
         emptyText: "Working on stuff, will post here soon&hellip;",
         content: projects.map((project) => ({
             text: project.data.metaContent.title,
-            link: `/project/${minifySlug(project.slug)}`,
+            link: `/project/${hashSlug(project.slug)}`,
         })),
         Icon: ProjectIcon,
     },
@@ -67,7 +67,7 @@ const blocks: {
         emptyText: "Scribbling and Drafting some ideas, Keep your eyes open&hellip;",
         content: publications.map((publication) => ({
             text: publication.data.metaContent.title,
-            link: `/pub/${minifySlug(publication.slug)}`,
+            link: `/pub/${hashSlug(publication.slug)}`,
         })),
         Icon: PublicationIcon,
     },
