@@ -2,7 +2,7 @@
 isDraft: true
 metaContent:
     {
-        title: "Why making a playgroung for generating fractals using L-systems led me into creating a DSL?",
+        title: "Making an interactive playground led me into making a DSL",
         description: "Why making a playgroung for generating fractals using L-systems led me into creating a DSL?",
         heroImage: [true, /index/pub/journey-from-medium-to-my-website.png],
         keywords: ["coding", "fractals", "geometry", "generative functions", "DSL", "interpreter"],
@@ -50,7 +50,7 @@ The above set of rules is easy to store as a type like this.
 // A two dimensional vector
 type V2 = [number,number];
 
-// A function which takes in 
+// A function which takes in
 // your current position,
 // and the direction you are facing towards
 // as arguments and returns your new position
@@ -156,7 +156,7 @@ This is more like defining our own set of operation on a system to simulate some
 If we put on our thinking cap, we can encode it in the typescript's type-syetem. Wanna take a look.
 
 ```typescript showLineNumbers=true title="types-for-playground-based-system.ts"
-type BinaryOperator = 
+type BinaryOperator =
     | "&&"
     | "||"
     | "^"
@@ -176,7 +176,7 @@ type BinaryOperator =
     | "<<"
     | ">>";
 
-type Expression = 
+type Expression =
     // a raw value
     | ["raw", number | boolean]
     // a variable either from state, of the loop iterator
@@ -187,10 +187,13 @@ type Expression =
     // Binary expression
     | [BinaryOperator, Expression, Expression];
 
-type Transformer<INLOOP extends boolean = false> = 
-    // to encode both stay and stepForward
-    | ["move", boolean]
-    // how much to rotate
+// break and continue
+type LoopOps = ["br" | "ct"];
+
+type Transform<InLoop extends boolean = false> =
+    // to encode stepForward
+    | ["move"]
+    // by what angle to rotate right
     | ["rot", number]
     // the factor by which we should scale
     // only positive values allowd
@@ -198,31 +201,35 @@ type Transformer<INLOOP extends boolean = false> =
     // assign the result of expression to state variable with the given name
     // if a variable with the given name does not exist, the parser will error
     | ["asgn", string, Expression]
-    // brach based on the condition expression,
-    //  the else branch's body is optional
-    | ["brch", Expression, (INLOOP extends true ? Transform<true> | ["break"] : Transform<false>)[]]
+    // branch based on the condition expression,
+    | ["brch", Expression, (InLoop extends true ? Transform<true> | LoopOps : Transform<false>)[]]
+    // for when you need an else branch
     | [
           "brch",
           Expression,
-          (INLOOP extends true ? Transform<true> | ["break"] : Transform<false>)[],
-          (INLOOP extends true ? Transform<true> | ["break"] : Transform<false>)[],
+          (INLOOP extends true ? Transform<true> | LoopOps : Transform<false>)[],
+          (INLOOP extends true ? Transform<true> | LoopOps : Transform<false>)[],
       ]
-    // loop's name the iteration variable and provide initial value along
-    // with condition experssion and the update value expression and a body
-    | ["loop", [string, Expression], Expression, Expression, (Transform<true> | ["break"])[]];
- 
+    // loop while the condition is true
+    // provide the name for the iteration variable, initial value,
+    // the condition experssion and the update value expression
+    // and a the body
+    | ["loop", string, Expression, Expression, Expression, (Transform<true> | LoopOps)[]]
+    // return statement
+    | ["ret"]
+    ;
+
 // An instruction can either be terminal or non terminal
 // i.e. do we need to expand it or not.
 // If it is non terminal where the first value of this tuple is false,
 // then the third value of the tuple is what it'll expand into.
-type Instruction = [false, Transformer[], string] | [true, Transformer];
- 
+type Rule = [false, Transform[], string] | [true, Transform];
+
+type RuleSet = { I: Rule, [key: string]: Rule };
+
 type PlaygroundRules = {
     state: { [key: string]: number | boolean; }
-    transforms: {
-        I: Instruction;
-        [key:string]: Instruction
-    }
+    transforms: RuleSet
 };
 ```
 
@@ -233,9 +240,9 @@ function DragonCurveRules() {
     return {
         state: {},
         transforms: {
-            I: [false, [["move", false]], "F"],
-            F: [false, [["move", true]], "FPH"],
-            H: [false, [["move", true]], "FNH"],
+            I: [false, [], "F"],
+            F: [false, [["move"]], "FPH"],
+            H: [false, [["move"]], "FNH"],
             P: [true, [["rot", -90]]],
             N: [true, [["rot", 90]]]
         }
@@ -246,12 +253,12 @@ function FibonacciWordFractalRules() {
     return {
         state: { turns: false }
         transforms: {
-            I: [false, [["move", false]], F],
+            I: [false, [], F],
             F: [
                 false,
                 [
                     ["asgn", "turns", ["!", ["var", false, "turns"]]],
-                    ["move", true]
+                    ["move"]
                 ],
                 "H"
             ],
@@ -260,7 +267,7 @@ function FibonacciWordFractalRules() {
                 [
                     ["asgn", "turns", ["!", ["var", false, "turns"]]],
                     ["brch", ["var", false, "turns"], [["rot", -90]], [["rot", 90]]],
-                    ["move", true]
+                    ["move"]
                 ],
                 "HF"
             ]
@@ -270,6 +277,8 @@ function FibonacciWordFractalRules() {
 ```
 
 If you take a close look at the allowed operations, this looks more like language where you just write expressions and expression trees explicitly, which finally will get turned into a function that will run in your browser via javascript. Does not sound lovely, I know. But this is what we have for now.
+
+Now I just have one fear, that since I am not allowing declaration of variables, users will exploit the loop as it is the only place to do so, but even then, it's not much useful given the constraints this system has and will just eat away resources.
 
 ## Go play in the park
 
