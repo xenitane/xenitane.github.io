@@ -23,7 +23,8 @@ const links: [string, string][] = [
 >
     <div class="flex w-full items-center gap-4">
         <a class="flex gap-2" href="/">
-            <img src={cdnify([true, "/index/logo.png"])} class="aspect-square h-9" alt="logo" />
+            <img src={cdnify([true, "/index/logo-light.png"])} class="inline-block aspect-square w-9 dark:hidden" alt="logo" />
+            <img src={cdnify([true, "/index/logo-dark.png"])} class="hidden aspect-square w-9 dark:inline-block" alt="logo" />
             <span class="text-3xl font-medium tracking-tighter">Xenitane&trade;</span>
         </a>
         <input type="checkbox" id="__is_nav_sidebar_open" class="hidden" />

@@ -11,7 +11,8 @@ import cdnify from "@/lib/cdnify";
 >
     <div class="flex w-full gap-2">
         <div class="flex flex-1 items-center gap-1.5 text-xl font-medium tracking-tight">
-            <img src={cdnify([true, "/index/logo.png"])} class="h-7 w-7" />
+            <img src={cdnify([true, "/index/logo-light.png"])} class="inline-block aspect-square w-7 dark:hidden" />
+            <img src={cdnify([true, "/index/logo-dark.png"])} class="hidden aspect-square w-7 dark:inline-block" />
             Xenitane&trade;
         </div>
         <div class="flex flex-1 justify-end gap-3">
